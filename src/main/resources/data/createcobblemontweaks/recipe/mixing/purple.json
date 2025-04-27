@@ -1,0 +1,23 @@
+{
+  "type": "create:mixing",
+  "heat_requirement": "heated",
+  "ingredients": [
+    { "item": "cobblemon:red_apricorn" },
+    { "item": "cobblemon:red_apricorn" },
+	{ "item": "cobblemon:blue_apricorn" },
+    { "item": "cobblemon:blue_apricorn" },
+	 {
+      "type": "fluid_stack",
+      "fluid": "minecraft:water",
+      "amount": 1000
+    }
+  ],
+  "results": [
+   {
+   
+		"count": 5,
+        "id": "createcobblemontweaks:purple_apricorn_mash"
+      
+    }
+  ]
+}

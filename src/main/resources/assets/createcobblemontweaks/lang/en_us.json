@@ -1,0 +1,25 @@
+{
+  "itemGroup.createcobblemontweaks": "Create: Cobblemon Tweaks",
+
+  "item.createcobblemontweaks.purple_apricorn_mash": "Purple Apricorn Mash",
+  "item.createcobblemontweaks.purple_ball_lid": "Purple Ball Lid",
+  "item.createcobblemontweaks.superior_ball_base": "Superior Ball Base",
+  "item.createcobblemontweaks.masterful_ball_lid": "Masterful Ball Lid",
+  "item.createcobblemontweaks.unrefined_superior_sphere": "Unrefined Superior Sphere",
+  "item.createcobblemontweaks.incomplete_masterful_ball_lid": "Incomplete Masterful Ball Lid",
+  "item.createcobblemontweaks.hp_silver_bottlecap": "HP Silver Bottle Cap",
+  "item.createcobblemontweaks.epic_candy": "Epic Candy",
+  "item.createcobblemontweaks.repel_block": "Repel Block",
+
+  "block.createcobblemontweaks.repel_block": "Repel Block",
+
+  "tooltip.createcobblemontweaks.epic_candy": "§dLevels up a Pokémon by 20 levels!",
+  "tooltip.createcobblemontweaks.hp_silver_bottlecap": "§bPerfects a Pokémon's HP IV!",
+  "tooltip.createcobblemontweaks.repel_block": "Prevents Pokémon from spawning nearby. Disable with redstone.",
+
+  "message.createcobblemontweaks.pokemon_max_level": "This Pokémon is already level 100."
+
+
+
+
+}

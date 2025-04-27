@@ -1,0 +1,124 @@
+{
+  "type": "create:sequenced_assembly",
+  "ingredient": {
+    "tag": "createcobblemontweaks:component_lids"
+  },
+  "loops": 1,
+  "results": [
+    {
+      "chance": 80.0,
+      "id": "createcobblemontweaks:masterful_ball_lid"
+    },
+    {
+      "chance": 8.0,
+      "id": "createcobblemontweaks:purple_ball_lid"
+    },
+    {
+      "chance": 4.0,
+      "id": "minecraft:netherite_ingot"
+    }
+
+  ],
+
+  "sequence": [
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "createcobblemontweaks:incomplete_masterful_ball_lid"
+        },
+        {
+          "item": "create:polished_rose_quartz"
+        }
+      ],
+      "results": [
+        {
+          "id": "createcobblemontweaks:incomplete_masterful_ball_lid"
+        }
+      ]
+    },
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "createcobblemontweaks:incomplete_masterful_ball_lid"
+        },
+        {
+          "item": "minecraft:end_rod"
+        }
+      ],
+      "results": [
+        {
+          "id": "createcobblemontweaks:incomplete_masterful_ball_lid"
+        }
+      ]
+    },
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "createcobblemontweaks:incomplete_masterful_ball_lid"
+        },
+        {
+          "item": "minecraft:end_rod"
+        }
+      ],
+      "results": [
+        {
+          "id": "createcobblemontweaks:incomplete_masterful_ball_lid"
+        }
+      ]
+    },
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "createcobblemontweaks:incomplete_masterful_ball_lid"
+        },
+        {
+          "item": "minecraft:end_rod"
+        }
+      ],
+      "results": [
+        {
+          "id": "createcobblemontweaks:incomplete_masterful_ball_lid"
+        }
+      ]
+    },
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "createcobblemontweaks:incomplete_masterful_ball_lid"
+        },
+        {
+          "item": "minecraft:end_rod"
+        }
+      ],
+      "results": [
+        {
+          "id": "createcobblemontweaks:incomplete_masterful_ball_lid"
+        }
+      ]
+    },
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "createcobblemontweaks:incomplete_masterful_ball_lid"
+        },
+        {
+          "item": "create:polished_rose_quartz"
+        }
+      ],
+      "results": [
+        {
+          "id": "createcobblemontweaks:incomplete_masterful_ball_lid"
+        }
+      ]
+    }
+  ],
+  "transitional_item": {
+    "id": "createcobblemontweaks:incomplete_masterful_ball_lid"
+  }
+}

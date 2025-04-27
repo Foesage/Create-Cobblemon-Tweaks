@@ -1,0 +1,15 @@
+{
+  "type": "create:cutting",
+  "ingredients": [
+    {
+      "item": "createcobblemontweaks:unrefined_superior_sphere"
+    }
+  ],
+  "processing_time": 60,
+  "results": [
+    {
+      "count": 2,
+      "id": "createcobblemontweaks:superior_ball_base"
+    }
+  ]
+}
