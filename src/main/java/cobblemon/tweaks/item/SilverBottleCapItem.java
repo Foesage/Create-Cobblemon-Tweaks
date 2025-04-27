@@ -1,33 +1,31 @@
 package cobblemon.tweaks.item;
 
-import com.cobblemon.mod.common.api.pokemon.stats.Stats;
+import com.cobblemon.mod.common.api.pokemon.stats.Stat;
 import com.cobblemon.mod.common.entity.pokemon.PokemonEntity;
 import com.cobblemon.mod.common.pokemon.IVs;
 import net.minecraft.network.chat.Component;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.nbt.IntArrayTag;
-import net.minecraft.nbt.ListTag;
-import net.minecraft.nbt.ByteTag;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.entity.projectile.FireworkRocketEntity;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
 
-
 import java.util.List;
 
-public class HpSilverBottleCapItem extends Item {
+public class SilverBottleCapItem extends Item {
 
-    public HpSilverBottleCapItem(Properties properties) {
+    private final Stat stat;
+    private final String tooltipTranslationKey;
+
+    public SilverBottleCapItem(Properties properties, Stat stat, String tooltipTranslationKey) {
         super(properties);
+        this.stat = stat;
+        this.tooltipTranslationKey = tooltipTranslationKey;
     }
 
     @Override
@@ -36,7 +34,6 @@ public class HpSilverBottleCapItem extends Item {
             Level level = player.level();
 
             if (!level.isClientSide) {
-                // Ownership check
                 if (pokemonEntity.getOwnerUUID() == null || !pokemonEntity.getOwnerUUID().equals(player.getUUID())) {
                     player.sendSystemMessage(Component.literal("You cannot use this item on someone else's Pokémon."));
                     return InteractionResult.FAIL;
@@ -44,28 +41,27 @@ public class HpSilverBottleCapItem extends Item {
 
                 var pokemon = pokemonEntity.getPokemon();
                 IVs ivs = pokemon.getIvs();
-                int oldHpIv = ivs.get(Stats.HP);
+                int oldIv = ivs.get(stat);
 
-                if (oldHpIv != 31) {
-                    // Set HP IV to perfect
-                    pokemon.setIV(Stats.HP, 31);
-
-                    // Shrink the item (consume it)
+                if (oldIv != 31) {
+                    pokemon.setIV(stat, 31);
                     stack.shrink(1);
 
-                    // Play level-up sound
                     level.playSound(null, target.getOnPos(), SoundEvents.PLAYER_LEVELUP, SoundSource.PLAYERS, 1.0f, 1.0f);
 
-
-                    // Message to player
-                    player.sendSystemMessage(Component.literal(
-                            "Your " + pokemon.getSpecies().getName() + "'s HP IV has increased from " + oldHpIv + " to 31!"
-                    ));
+                    player.sendSystemMessage(Component.literal("Your ")
+                            .append(Component.literal(pokemon.getSpecies().getName()))
+                            .append("'s ")
+                            .append(stat.getDisplayName())
+                            .append(" IV has increased from ")
+                            .append(Component.literal(String.valueOf(oldIv)))
+                            .append(" to 31!"));
                 } else {
-                    // Already perfect HP IV
-                    player.sendSystemMessage(Component.literal(
-                            pokemon.getSpecies().getName() + " already has perfect HP IV!"
-                    ));
+                    player.sendSystemMessage(Component.literal(pokemon.getSpecies().getName())
+                            .append(" already has perfect ")
+                            .append(stat.getDisplayName())
+                            .append(" IV!"));
+
                 }
             }
             return InteractionResult.SUCCESS;
@@ -74,8 +70,9 @@ public class HpSilverBottleCapItem extends Item {
         return super.interactLivingEntity(stack, player, target, hand);
     }
 
-    public void appendHoverText(ItemStack arg, Item.TooltipContext arg2, List<Component> listComponent, TooltipFlag arg3) {
-        listComponent.add(Component.translatable("tooltip.createcobblemontweaks.hp_silver_bottlecap"));
-        super.appendHoverText(arg, arg2, listComponent, arg3);
+    @Override
+    public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> components, TooltipFlag flag) {
+        components.add(Component.translatable(tooltipTranslationKey));
+        super.appendHoverText(stack, context, components, flag);
     }
 }

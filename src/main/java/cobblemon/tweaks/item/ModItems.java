@@ -2,6 +2,7 @@ package cobblemon.tweaks.item;
 
 import cobblemon.tweaks.CreateCobblemonTweaks;
 import cobblemon.tweaks.block.ModBlocks;
+import com.cobblemon.mod.common.api.pokemon.stats.Stats;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Rarity;
@@ -44,12 +45,31 @@ public class ModItems {
                     .rarity(Rarity.EPIC))
     );
 
-    public static final DeferredItem<Item> HP_SILVER_BOTTLECAP = ITEMS.register("hp_silver_bottlecap",
-            () -> new HpSilverBottleCapItem(new Item.Properties()
-                    .stacksTo(64)
-                    .rarity(Rarity.UNCOMMON)
-            )
-    );
+    // HP Silver Bottlecap
+    public static final DeferredItem<SilverBottleCapItem> HP_SILVER_BOTTLECAP = ITEMS.register("hp_silver_bottlecap",
+            () -> new SilverBottleCapItem(new Item.Properties(), Stats.HP, "tooltip.createcobblemontweaks.hp_silver_bottlecap"));
+
+    // Attack Silver Bottlecap
+    public static final DeferredItem<SilverBottleCapItem> ATK_SILVER_BOTTLECAP = ITEMS.register("atk_silver_bottlecap",
+            () -> new SilverBottleCapItem(new Item.Properties(), Stats.ATTACK, "tooltip.createcobblemontweaks.atk_silver_bottlecap"));
+
+    // Defense Silver Bottlecap
+    public static final DeferredItem<SilverBottleCapItem> DEF_SILVER_BOTTLECAP = ITEMS.register("def_silver_bottlecap",
+            () -> new SilverBottleCapItem(new Item.Properties(), Stats.DEFENCE, "tooltip.createcobblemontweaks.def_silver_bottlecap"));
+
+
+    // Special Attack Silver Bottlecap
+    public static final DeferredItem<SilverBottleCapItem> SPATK_SILVER_BOTTLECAP = ITEMS.register("spatk_silver_bottlecap",
+            () -> new SilverBottleCapItem(new Item.Properties(), Stats.SPECIAL_ATTACK, "tooltip.createcobblemontweaks.spatk_silver_bottlecap"));
+
+    // Special Defense Silver Bottlecap
+    public static final DeferredItem<SilverBottleCapItem> SPDEF_SILVER_BOTTLECAP = ITEMS.register("spdef_silver_bottlecap",
+            () -> new SilverBottleCapItem(new Item.Properties(), Stats.SPECIAL_DEFENCE, "tooltip.createcobblemontweaks.spdef_silver_bottlecap"));
+
+    // Speed Silver Bottlecap
+    public static final DeferredItem<SilverBottleCapItem> SPEED_SILVER_BOTTLECAP = ITEMS.register("speed_silver_bottlecap",
+            () -> new SilverBottleCapItem(new Item.Properties(), Stats.SPEED, "tooltip.createcobblemontweaks.speed_silver_bottlecap"));
+
 
     public static final DeferredItem<Item> REPEL_BLOCK_ITEM = ModItems.ITEMS.register("repel_block",
             () -> new BlockItem(ModBlocks.REPEL_BLOCK.get(), new Item.Properties()));

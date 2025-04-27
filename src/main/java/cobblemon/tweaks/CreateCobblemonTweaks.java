@@ -43,8 +43,14 @@ public class CreateCobblemonTweaks {
                 output.accept(ModItems.SUPERIOR_SPHERE.get());
                 output.accept(ModItems.INCOMPLETE_MASTERFUL_BALL_LID.get());
                 output.accept(ModItems.EPIC_CANDY.get());
-                output.accept(ModItems.HP_SILVER_BOTTLECAP.get());
                 output.accept(ModItems.REPEL_BLOCK_ITEM.get());
+                output.accept(ModItems.HP_SILVER_BOTTLECAP.get());
+                output.accept(ModItems.ATK_SILVER_BOTTLECAP.get());
+                output.accept(ModItems.DEF_SILVER_BOTTLECAP.get());
+                output.accept(ModItems.SPATK_SILVER_BOTTLECAP.get());
+                output.accept(ModItems.SPDEF_SILVER_BOTTLECAP.get());
+                output.accept(ModItems.SPEED_SILVER_BOTTLECAP.get());
+
             })
             .build());
 

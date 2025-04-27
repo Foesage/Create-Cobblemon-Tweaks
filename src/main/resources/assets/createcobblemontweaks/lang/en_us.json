@@ -7,19 +7,33 @@
   "item.createcobblemontweaks.masterful_ball_lid": "Masterful Ball Lid",
   "item.createcobblemontweaks.unrefined_superior_sphere": "Unrefined Superior Sphere",
   "item.createcobblemontweaks.incomplete_masterful_ball_lid": "Incomplete Masterful Ball Lid",
-  "item.createcobblemontweaks.hp_silver_bottlecap": "HP Silver Bottle Cap",
+ // "item.createcobblemontweaks.hp_silver_bottlecap": "HP Silver Bottle Cap",
   "item.createcobblemontweaks.epic_candy": "Epic Candy",
   "item.createcobblemontweaks.repel_block": "Repel Block",
+  "item.createcobblemontweaks.hp_silver_bottlecap": "HP Silver Bottlecap",
+  "item.createcobblemontweaks.atk_silver_bottlecap": "Attack Silver Bottlecap",
+  "item.createcobblemontweaks.def_silver_bottlecap": "Defence Silver Bottlecap",
+  "item.createcobblemontweaks.spatk_silver_bottlecap": "Special Attack Silver Bottlecap",
+  "item.createcobblemontweaks.spdef_silver_bottlecap": "Special Defence Silver Bottlecap",
+  "item.createcobblemontweaks.speed_silver_bottlecap": "Speed Silver Bottlecap",
 
-  "block.createcobblemontweaks.repel_block": "Repel Block",
 
-  "tooltip.createcobblemontweaks.epic_candy": "§dLevels up a Pokémon by 20 levels!",
-  "tooltip.createcobblemontweaks.hp_silver_bottlecap": "§bPerfects a Pokémon's HP IV!",
+
+"block.createcobblemontweaks.repel_block": "Repel Block",
+
+  "tooltip.createcobblemontweaks.epic_candy": "§dLevels up a Pokémon by 50 levels!",
+  //"tooltip.createcobblemontweaks.hp_silver_bottlecap": "§bPerfects a Pokémon's HP IV!",
   "tooltip.createcobblemontweaks.repel_block": "Prevents Pokémon from spawning nearby. Disable with redstone.",
 
-  "message.createcobblemontweaks.pokemon_max_level": "This Pokémon is already level 100."
+  "message.createcobblemontweaks.pokemon_max_level": "This Pokémon is already level 100.",
 
 
 
+  "tooltip.createcobblemontweaks.hp_silver_bottlecap": "Maximizes a Pokémon's HP IV to 31.",
+  "tooltip.createcobblemontweaks.atk_silver_bottlecap": "Maximizes a Pokémon's Attack IV to 31.",
+  "tooltip.createcobblemontweaks.def_silver_bottlecap": "Maximizes a Pokémon's Defence IV to 31.",
+  "tooltip.createcobblemontweaks.spatk_silver_bottlecap": "Maximizes a Pokémon's Special Attack IV to 31.",
+  "tooltip.createcobblemontweaks.spdef_silver_bottlecap": "Maximizes a Pokémon's Special Defence IV to 31.",
+  "tooltip.createcobblemontweaks.speed_silver_bottlecap": "Maximizes a Pokémon's Speed IV to 31."
 
 }
