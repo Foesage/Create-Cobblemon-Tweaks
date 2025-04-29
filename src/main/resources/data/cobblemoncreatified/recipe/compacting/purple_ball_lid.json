@@ -1,0 +1,26 @@
+{
+  "type": "create:compacting",
+  "heat_requirement": "superheated",
+  "ingredients": [
+    {
+      "item": "minecraft:netherite_ingot"
+    },
+    {
+      "item": "minecraft:shulker_shell"
+    },
+    {
+      "item": "minecraft:netherite_ingot"
+    },
+    {
+      "item": "minecraft:netherite_ingot"
+    },
+    {
+      "item": "cobblemoncreatified:purple_apricorn_mash"
+    }
+  ],
+  "results": [
+    {
+      "id": "cobblemoncreatified:purple_ball_lid"
+    }
+  ]
+}

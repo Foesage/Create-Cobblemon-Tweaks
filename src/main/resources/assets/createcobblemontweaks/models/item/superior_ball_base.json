@@ -1,6 +1,0 @@
-{
-  "parent": "minecraft:item/generated",
-  "textures": {
-    "layer0": "createcobblemontweaks:item/superior_ball_base"
-  }
-}

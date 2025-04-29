@@ -1,0 +1,13 @@
+{
+  "required": false,
+  "package": "cobblemon.creatified.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "mixins": [
+    "BroadcastSpawnMixin",
+    "PlayShinySoundMixin"
+  ],
+  "client": [],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "cobblemoncreatified:item/purple_ball_lid"
+  }
+}

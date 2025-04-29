@@ -1,0 +1,29 @@
+{
+  "type": "create:compacting",
+  "heat_requirement": "heated",
+  "ingredients": [
+    {
+      "item": "minecraft:netherite_ingot"
+    },
+    {
+      "item": "minecraft:echo_shard"
+    },
+    {
+      "item": "cobblemon:black_tumblestone"
+    },
+    {
+      "item": "cobblemon:black_tumblestone"
+    },
+    {
+      "item": "cobblemon:white_apricorn"
+    },
+    {
+      "item": "cobblemon:white_apricorn"
+    }
+  ],
+  "results": [
+    {
+      "id": "cobblemoncreatified:unrefined_superior_sphere"
+    }
+  ]
+}

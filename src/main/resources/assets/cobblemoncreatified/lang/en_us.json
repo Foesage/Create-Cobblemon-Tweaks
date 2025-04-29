@@ -1,0 +1,40 @@
+{
+  "itemGroup.cobblemoncreatified": "Create: Cobblemon Tweaks",
+
+  "item.cobblemoncreatified.purple_apricorn_mash": "Purple Apricorn Mash",
+  "item.cobblemoncreatified.purple_ball_lid": "Purple Ball Lid",
+  "item.cobblemoncreatified.superior_ball_base": "Superior Ball Base",
+  "item.cobblemoncreatified.masterful_ball_lid": "Masterful Ball Lid",
+  "item.cobblemoncreatified.unrefined_superior_sphere": "Unrefined Superior Sphere",
+  "item.cobblemoncreatified.incomplete_masterful_ball_lid": "Incomplete Masterful Ball Lid",
+ // "item.cobblemoncreatified.hp_silver_bottlecap": "HP Silver Bottle Cap",
+  "item.cobblemoncreatified.epic_candy": "Epic Candy",
+  "item.cobblemoncreatified.repel_block": "Repel Block",
+  "item.cobblemoncreatified.hp_silver_bottlecap": "HP Silver Bottlecap",
+  "item.cobblemoncreatified.atk_silver_bottlecap": "Attack Silver Bottlecap",
+  "item.cobblemoncreatified.def_silver_bottlecap": "Defence Silver Bottlecap",
+  "item.cobblemoncreatified.spatk_silver_bottlecap": "Special Attack Silver Bottlecap",
+  "item.cobblemoncreatified.spdef_silver_bottlecap": "Special Defence Silver Bottlecap",
+  "item.cobblemoncreatified.speed_silver_bottlecap": "Speed Silver Bottlecap",
+
+
+
+"block.cobblemoncreatified.repel_block": "Repel Block",
+
+  "tooltip.cobblemoncreatified.epic_candy": "§dLevels up a Pokémon by 50 levels!",
+  //"tooltip.cobblemoncreatified.hp_silver_bottlecap": "§bPerfects a Pokémon's HP IV!",
+  "tooltip.cobblemoncreatified.repel_block": "Repels Pokémon in a large radius. Right-click to show range.",
+
+
+"message.cobblemoncreatified.pokemon_max_level": "This Pokémon is already level 100.",
+
+
+
+  "tooltip.cobblemoncreatified.hp_silver_bottlecap": "Maximizes a Pokémon's HP IV to 31.",
+  "tooltip.cobblemoncreatified.atk_silver_bottlecap": "Maximizes a Pokémon's Attack IV to 31.",
+  "tooltip.cobblemoncreatified.def_silver_bottlecap": "Maximizes a Pokémon's Defence IV to 31.",
+  "tooltip.cobblemoncreatified.spatk_silver_bottlecap": "Maximizes a Pokémon's Special Attack IV to 31.",
+  "tooltip.cobblemoncreatified.spdef_silver_bottlecap": "Maximizes a Pokémon's Special Defence IV to 31.",
+  "tooltip.cobblemoncreatified.speed_silver_bottlecap": "Maximizes a Pokémon's Speed IV to 31."
+
+}

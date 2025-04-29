@@ -1,0 +1,15 @@
+{
+  "type": "create:cutting",
+  "ingredients": [
+    {
+      "item": "cobblemoncreatified:unrefined_superior_sphere"
+    }
+  ],
+  "processing_time": 60,
+  "results": [
+    {
+      "count": 2,
+      "id": "cobblemoncreatified:superior_ball_base"
+    }
+  ]
+}
