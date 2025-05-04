@@ -47,9 +47,9 @@ public class CobblemonSpawnBlocker {
                 if (pokemon != null && pokemon.getShiny()) {
                     // 🔥 Instantly remove shiny Pokémon if near repel block
                     pokemonEntity.remove(Entity.RemovalReason.DISCARDED);
-                    CobblemonCreatified.LOGGER.info("[COBBLETWEAKS] Blocked and immediately removed shiny Pokémon at {}", spawnPos);
+               //     CobblemonCreatified.LOGGER.info("[COBBLETWEAKS] Blocked and immediately removed shiny Pokémon at {}", spawnPos);
                 } else {
-                    CobblemonCreatified.LOGGER.info("[COBBLETWEAKS] Marked normal Pokémon as RepelBlocked at {}", spawnPos);
+                //    CobblemonCreatified.LOGGER.info("[COBBLETWEAKS] Marked normal Pokémon as RepelBlocked at {}", spawnPos);
                 }
             }
 

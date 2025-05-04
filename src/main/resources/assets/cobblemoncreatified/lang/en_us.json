@@ -7,34 +7,62 @@
   "item.cobblemoncreatified.masterful_ball_lid": "Masterful Ball Lid",
   "item.cobblemoncreatified.unrefined_superior_sphere": "Unrefined Superior Sphere",
   "item.cobblemoncreatified.incomplete_masterful_ball_lid": "Incomplete Masterful Ball Lid",
- // "item.cobblemoncreatified.hp_silver_bottlecap": "HP Silver Bottle Cap",
   "item.cobblemoncreatified.epic_candy": "Epic Candy",
   "item.cobblemoncreatified.repel_block": "Repel Block",
-  "item.cobblemoncreatified.hp_silver_bottlecap": "HP Silver Bottlecap",
-  "item.cobblemoncreatified.atk_silver_bottlecap": "Attack Silver Bottlecap",
-  "item.cobblemoncreatified.def_silver_bottlecap": "Defence Silver Bottlecap",
-  "item.cobblemoncreatified.spatk_silver_bottlecap": "Special Attack Silver Bottlecap",
-  "item.cobblemoncreatified.spdef_silver_bottlecap": "Special Defence Silver Bottlecap",
-  "item.cobblemoncreatified.speed_silver_bottlecap": "Speed Silver Bottlecap",
+
 
 
 
 "block.cobblemoncreatified.repel_block": "Repel Block",
 
   "tooltip.cobblemoncreatified.epic_candy": "§dLevels up a Pokémon by 50 levels!",
-  //"tooltip.cobblemoncreatified.hp_silver_bottlecap": "§bPerfects a Pokémon's HP IV!",
   "tooltip.cobblemoncreatified.repel_block": "Repels Pokémon in a large radius. Right-click to show range.",
 
 
 "message.cobblemoncreatified.pokemon_max_level": "This Pokémon is already level 100.",
+  "item.cobblemoncreatified.shiny_token": "Shiny Token",
+  "tooltip.cobblemoncreatified.shiny_token": "Makes a Pokémon permanently shiny. One-time use. ✨",
+
+
+  //Gold Bottlecap
+  "item.cobblemoncreatified.gold_bottlecap": "§6§l§oGold Bottlecap",
+  "tooltip.cobblemoncreatified.gold_bottlecap": "§6§l§oMaxes all of a Pokémon's IVs to 31.",
 
 
 
-  "tooltip.cobblemoncreatified.hp_silver_bottlecap": "Maximizes a Pokémon's HP IV to 31.",
-  "tooltip.cobblemoncreatified.atk_silver_bottlecap": "Maximizes a Pokémon's Attack IV to 31.",
-  "tooltip.cobblemoncreatified.def_silver_bottlecap": "Maximizes a Pokémon's Defence IV to 31.",
-  "tooltip.cobblemoncreatified.spatk_silver_bottlecap": "Maximizes a Pokémon's Special Attack IV to 31.",
-  "tooltip.cobblemoncreatified.spdef_silver_bottlecap": "Maximizes a Pokémon's Special Defence IV to 31.",
-  "tooltip.cobblemoncreatified.speed_silver_bottlecap": "Maximizes a Pokémon's Speed IV to 31."
+//Silver Bottlecaps
 
+  "item.cobblemoncreatified.hp_silver_bottlecap": "§b§oHP Silver Bottlecap",
+  "item.cobblemoncreatified.atk_silver_bottlecap": "§b§oAttack Silver Bottlecap",
+  "item.cobblemoncreatified.def_silver_bottlecap": "§b§oDefense Silver Bottlecap",
+  "item.cobblemoncreatified.spatk_silver_bottlecap": "§b§oSpecial Attack Silver Bottlecap",
+  "item.cobblemoncreatified.spdef_silver_bottlecap": "§b§oSpecial Defense Silver Bottlecap",
+  "item.cobblemoncreatified.speed_silver_bottlecap": "§b§oSpeed Silver Bottlecap",
+
+  "tooltip.cobblemoncreatified.hp_silver_bottlecap": "§b§oPerfects this Pokémon's HP IV to 31.",
+  "tooltip.cobblemoncreatified.atk_silver_bottlecap": "§b§oPerfects this Pokémon's Attack IV to 31.",
+  "tooltip.cobblemoncreatified.def_silver_bottlecap": "§b§oPerfects this Pokémon's Defense IV to 31.",
+  "tooltip.cobblemoncreatified.spatk_silver_bottlecap": "§b§oPerfects this Pokémon's Special Attack IV to 31.",
+  "tooltip.cobblemoncreatified.spdef_silver_bottlecap": "§b§oPerfects this Pokémon's Special Defense IV to 31.",
+  "tooltip.cobblemoncreatified.speed_silver_bottlecap": "§b§oPerfects this Pokémon's Speed IV to 31.",
+
+//Charcoal Bottlecaps
+
+  "item.cobblemoncreatified.hp_charcoal_bottlecap": "§8§oHP Charcoal Bottlecap",
+  "item.cobblemoncreatified.atk_charcoal_bottlecap": "§8§oAttack Charcoal Bottlecap",
+  "item.cobblemoncreatified.def_charcoal_bottlecap": "§8§oDefense Charcoal Bottlecap",
+  "item.cobblemoncreatified.spatk_charcoal_bottlecap": "§8§oSpecial Attack Charcoal Bottlecap",
+  "item.cobblemoncreatified.spdef_charcoal_bottlecap": "§8§oSpecial Defense Charcoal Bottlecap",
+  "item.cobblemoncreatified.speed_charcoal_bottlecap": "§8§oSpeed Charcoal Bottlecap",
+
+  "tooltip.cobblemoncreatified.hp_charcoal_bottlecap": "§7§oA bitter gift. Lowers HP IV by 1.",
+  "tooltip.cobblemoncreatified.atk_charcoal_bottlecap": "§7§oStrength fades. Lowers Attack IV by 1.",
+  "tooltip.cobblemoncreatified.def_charcoal_bottlecap": "§7§oA crack in the armor. Lowers Defense IV by 1.",
+  "tooltip.cobblemoncreatified.spatk_charcoal_bottlecap": "§7§oDimmed brilliance. Lowers Special Attack IV by 1.",
+  "tooltip.cobblemoncreatified.spdef_charcoal_bottlecap": "§7§oNo longer untouchable. Lowers Special Defense IV by 1.",
+  "tooltip.cobblemoncreatified.speed_charcoal_bottlecap": "§7§oSlows the heartbeat. Lowers Speed IV by 1.",
+
+
+  //Test Crap
+  "item.cobblemoncreatified.test_particle_item": "Test Particle Item"
 }

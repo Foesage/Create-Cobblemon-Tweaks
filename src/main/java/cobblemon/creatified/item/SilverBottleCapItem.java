@@ -2,8 +2,12 @@ package cobblemon.creatified.item;
 
 import com.cobblemon.mod.common.api.pokemon.stats.Stat;
 import com.cobblemon.mod.common.entity.pokemon.PokemonEntity;
+import com.cobblemon.mod.common.net.messages.client.effect.SpawnSnowstormEntityParticlePacket;
 import com.cobblemon.mod.common.pokemon.IVs;
 import net.minecraft.network.chat.Component;
+import net.minecraft.server.MinecraftServer;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
@@ -13,11 +17,10 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.Level;
-import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
+
+import static com.cobblemon.mod.common.util.MiscUtilsKt.cobblemonResource;
 
 public class SilverBottleCapItem extends Item {
 
@@ -30,10 +33,13 @@ public class SilverBottleCapItem extends Item {
         this.tooltipTranslationKey = tooltipTranslationKey;
     }
 
-    @Override
+    public void appendHoverText(ItemStack stack, Item.TooltipContext context, List<Component> tooltip, TooltipFlag flag) {
+        tooltip.add(Component.translatable(tooltipTranslationKey));
+    }
+
     public InteractionResult interactLivingEntity(ItemStack stack, Player player, LivingEntity target, InteractionHand hand) {
         if (player.getMainHandItem().is(stack.getItem()) && target instanceof PokemonEntity pokemonEntity) {
-            Level level = player.level();
+            var level = player.level();
 
             if (!level.isClientSide) {
                 if (pokemonEntity.getOwnerUUID() == null || !pokemonEntity.getOwnerUUID().equals(player.getUUID())) {
@@ -49,7 +55,27 @@ public class SilverBottleCapItem extends Item {
                     pokemon.setIV(stat, 31);
                     stack.shrink(1);
 
+                    // Play sound and Pokémon cry
                     level.playSound(null, target.blockPosition(), SoundEvents.PLAYER_LEVELUP, SoundSource.PLAYERS, 1.0f, 1.0f);
+                    pokemonEntity.cry();
+
+                    // Sparkle effect 1: shiny_ring
+                    SpawnSnowstormEntityParticlePacket shinyPacket = new SpawnSnowstormEntityParticlePacket(
+                            cobblemonResource("shiny_ring"),
+                            pokemonEntity.getId(),
+                            List.of("shiny_particles", "middle"),
+                            null,
+                            null
+                    );
+
+                    // Send both to nearby players
+                    MinecraftServer server = ((ServerLevel) level).getServer();
+                    for (ServerPlayer p : server.getPlayerList().getPlayers()) {
+                        if (p.level().dimension().equals(level.dimension()) &&
+                                p.distanceToSqr(pokemonEntity) <= 64 * 64) {
+                            shinyPacket.sendToPlayer(p);
+                        }
+                    }
 
                     player.sendSystemMessage(Component.literal("Your ")
                             .append(pokemon.getSpecies().getTranslatedName())
@@ -70,11 +96,4 @@ public class SilverBottleCapItem extends Item {
         }
         return super.interactLivingEntity(stack, player, target, hand);
     }
-
-
-    public void appendHoverText(ItemStack stack, @Nullable BlockGetter getter, List<Component> tooltip, TooltipFlag flag) {
-        tooltip.add(Component.translatable("tooltip.cobblemoncreatified.epic_candy")); // (or whatever text)
-        super.appendHoverText(stack, (TooltipContext) getter, tooltip, flag);
-    }
-
 }

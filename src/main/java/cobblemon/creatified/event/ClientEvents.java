@@ -15,7 +15,7 @@ public class ClientEvents {
     private final int REPEL_RADIUS = 48;
 
     @SubscribeEvent
-    public void onClientTick(ClientTickEvent event) {
+    public void onClientTick(ClientTickEvent.Post event) {
         Minecraft mc = Minecraft.getInstance();
         if (mc.player == null || mc.level == null) return;
 

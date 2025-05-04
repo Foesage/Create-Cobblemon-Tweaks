@@ -15,9 +15,9 @@ public abstract class PlayShinySoundMixin {
     @Inject(method = "handle", at = @At("HEAD"), cancellable = true)
     private static void onHandle(SpawnEvent<PokemonEntity> event, CallbackInfo ci) {
         Entity entity = event.getEntity();
-        if (entity == null || entity.isRemoved() || entity.getPersistentData().getBoolean("RepelBlocked")) {
-            System.out.println("[COBBLETWEAKS] Canceling PlayShinySound for RepelBlocked or removed entity!");
-            ci.cancel();
-        }
+       if (entity == null || entity.isRemoved() || entity.getPersistentData().getBoolean("RepelBlocked")) {
+           System.out.println("[COBBLETWEAKS] Canceling PlayShinySound for RepelBlocked or removed entity!");
+           ci.cancel();
+       }
     }
 }

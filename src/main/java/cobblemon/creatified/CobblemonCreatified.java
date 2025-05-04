@@ -47,13 +47,29 @@ public class CobblemonCreatified {
                 output.accept(ModItems.INCOMPLETE_MASTERFUL_BALL_LID.get());
                 output.accept(ModItems.EPIC_CANDY.get());
                 output.accept(ModItems.REPEL_BLOCK_ITEM.get());
+                output.accept(ModItems.SHINY_TOKEN.get());
+
+
+                // Gold Bottle Cap
+                output.accept(ModItems.GOLD_BOTTLECAP.get());
+
+                // Silver Bottle Caps
                 output.accept(ModItems.HP_SILVER_BOTTLECAP.get());
                 output.accept(ModItems.ATK_SILVER_BOTTLECAP.get());
                 output.accept(ModItems.DEF_SILVER_BOTTLECAP.get());
                 output.accept(ModItems.SPATK_SILVER_BOTTLECAP.get());
                 output.accept(ModItems.SPDEF_SILVER_BOTTLECAP.get());
                 output.accept(ModItems.SPEED_SILVER_BOTTLECAP.get());
+
+                // Charcoal Bottle Caps
+                output.accept(ModItems.HP_CHARCOAL_BOTTLECAP.get());
+                output.accept(ModItems.ATK_CHARCOAL_BOTTLECAP.get());
+                output.accept(ModItems.DEF_CHARCOAL_BOTTLECAP.get());
+                output.accept(ModItems.SPATK_CHARCOAL_BOTTLECAP.get());
+                output.accept(ModItems.SPDEF_CHARCOAL_BOTTLECAP.get());
+                output.accept(ModItems.SPEED_CHARCOAL_BOTTLECAP.get());
             })
+
             .build());
 
     public CobblemonCreatified(IEventBus modEventBus, ModContainer modContainer) {
