@@ -4,6 +4,7 @@ import com.cobblemon.mod.common.api.Priority;
 import com.cobblemon.mod.common.api.events.CobblemonEvents;
 import com.cobblemon.mod.common.api.events.entity.SpawnEvent;
 import cobblemon.creatified.CobblemonCreatified;
+import cobblemon.creatified.block.RepelBlock;
 import kotlin.Unit;
 import net.minecraft.core.BlockPos;
 import net.minecraft.resources.ResourceLocation;
@@ -27,29 +28,47 @@ public class CobblemonSpawnBlocker {
             Level level = pokemonEntity.level();
             BlockPos spawnPos = pokemonEntity.blockPosition();
 
-            int radius = 64; // 🔥 Large radius for repel detection
+            int maxRadius = 64;
+            int verticalRange = 64;
 
             boolean blockerNearby = StreamSupport.stream(BlockPos.betweenClosed(
-                    spawnPos.offset(-radius, -radius, -radius),
-                    spawnPos.offset(radius, radius, radius)
+                    spawnPos.offset(-maxRadius, -verticalRange, -maxRadius),
+                    spawnPos.offset(maxRadius, verticalRange, maxRadius)
             ).spliterator(), false).anyMatch(pos -> {
                 BlockState state = level.getBlockState(pos);
                 Block block = state.getBlock();
                 ResourceLocation blockId = block.builtInRegistryHolder().key().location();
-                return blockId != null && blockId.toString().equals("cobblemoncreatified:repel_block");
+
+                if (blockId != null
+                        && blockId.toString().equals("cobblemoncreatified:repel_block")
+                        && state.hasProperty(RepelBlock.POWERED)
+                        && state.getValue(RepelBlock.POWERED)) {
+
+                    int redstonePower = level.getBestNeighborSignal(pos);
+                    int effectiveRadius = Math.max(1, (int)(maxRadius * (1.0 - redstonePower / 15.0)));
+
+                    // Check if within effective radius
+                    double dx = pos.getX() + 0.5 - spawnPos.getX();
+                    double dz = pos.getZ() + 0.5 - spawnPos.getZ();
+                    double horizontalDistanceSq = dx * dx + dz * dz;
+                    int dy = Math.abs(pos.getY() - spawnPos.getY());
+
+                    return horizontalDistanceSq <= effectiveRadius * effectiveRadius && dy <= verticalRange;
+                }
+
+                return false;
             });
 
             if (blockerNearby) {
-                // ✅ Always mark RepelBlocked even for normal Pokémon
                 pokemonEntity.getPersistentData().putBoolean("RepelBlocked", true);
 
                 Pokemon pokemon = pokemonEntity.getPokemon();
                 if (pokemon != null && pokemon.getShiny()) {
-                    // 🔥 Instantly remove shiny Pokémon if near repel block
                     pokemonEntity.remove(Entity.RemovalReason.DISCARDED);
-               //     CobblemonCreatified.LOGGER.info("[COBBLETWEAKS] Blocked and immediately removed shiny Pokémon at {}", spawnPos);
+                    CobblemonCreatified.LOGGER.info("[COBBLETWEAKS] Blocked and immediately removed shiny Pokémon at {}", spawnPos);
                 } else {
-                //    CobblemonCreatified.LOGGER.info("[COBBLETWEAKS] Marked normal Pokémon as RepelBlocked at {}", spawnPos);
+                    pokemonEntity.remove(Entity.RemovalReason.DISCARDED);
+                    CobblemonCreatified.LOGGER.info("[COBBLETWEAKS] Blocked and removed normal Pokémon at {}", spawnPos);
                 }
             }
 

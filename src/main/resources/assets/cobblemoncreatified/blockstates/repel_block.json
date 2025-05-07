@@ -1,5 +1,8 @@
 {
   "variants": {
-    "": { "model": "cobblemoncreatified:block/repel_block" }
+    "facing=north": { "model": "cobblemoncreatified:block/repel_block", "y": 0 },
+    "facing=south": { "model": "cobblemoncreatified:block/repel_block", "y": 180 },
+    "facing=west":  { "model": "cobblemoncreatified:block/repel_block", "y": 270 },
+    "facing=east":  { "model": "cobblemoncreatified:block/repel_block", "y": 90 }
   }
 }

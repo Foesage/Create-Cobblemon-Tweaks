@@ -9,11 +9,13 @@
   "item.cobblemoncreatified.incomplete_masterful_ball_lid": "Incomplete Masterful Ball Lid",
   "item.cobblemoncreatified.epic_candy": "Epic Candy",
   "item.cobblemoncreatified.repel_block": "Repel Block",
+  "item.cobblemoncreatified.gender_swap_token": "Gender Swap Token",
+  "tooltip.cobblemoncreatified.gender_swap_token": "Swaps your Pokémon's gender to its opposite. Doesn't work on genderless species.",
 
 
 
 
-"block.cobblemoncreatified.repel_block": "Repel Block",
+  "block.cobblemoncreatified.repel_block": "Repel Block",
 
   "tooltip.cobblemoncreatified.epic_candy": "§dLevels up a Pokémon by 50 levels!",
   "tooltip.cobblemoncreatified.repel_block": "Repels Pokémon in a large radius. Right-click to show range.",
@@ -64,5 +66,15 @@
 
 
   //Test Crap
-  "item.cobblemoncreatified.test_particle_item": "Test Particle Item"
+  "item.cobblemoncreatified.test_particle_item": "Test Particle Item",
+
+  "item.cobblemoncreatified.inert_shiny_token": "Inert Shiny Token",
+  "item.cobblemoncreatified.inert_shiny_token.tooltip": "Defeat or release shiny Pokémon to activate.",
+
+  "tooltip.cobblemoncreatified.luring_incense": "Increases Pokémon spawn rates – does not affect legendaries.",
+  "block.cobblemoncreatified.luring_incense": "Luring Incense"
+
+
+
+
 }

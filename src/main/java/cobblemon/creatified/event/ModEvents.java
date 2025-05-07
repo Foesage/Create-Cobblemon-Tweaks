@@ -1,6 +1,7 @@
 package cobblemon.creatified.event;
 
 import cobblemon.creatified.block.RepelBlock;
+import cobblemon.creatified.event.ShinyTokenEvents;
 import com.cobblemon.mod.common.api.Priority;
 import com.cobblemon.mod.common.api.events.CobblemonEvents;
 import com.cobblemon.mod.common.api.events.entity.SpawnEvent;
@@ -13,7 +14,11 @@ import net.minecraft.world.level.block.Block;
 public class ModEvents {
 
     public static void registerListeners() {
+        // Register spawn blocking logic
         CobblemonEvents.POKEMON_ENTITY_SPAWN.subscribe(Priority.HIGHEST, ModEvents::onPokemonSpawn);
+
+        // ✅ Correct way to hook in functional event listeners from ShinyTokenEvents
+        ShinyTokenEvents.register();
     }
 
     private static Unit onPokemonSpawn(SpawnEvent<PokemonEntity> event) {
@@ -29,7 +34,7 @@ public class ModEvents {
 
     private static boolean isNearRepelBlock(Level level, BlockPos pos) {
         int radius = 48; // 3 chunk radius
-        int step = 3; // Skip-check every 3 blocks for speed
+        int step = 3;    // Skip-check every 3 blocks for speed
 
         BlockPos.MutableBlockPos mutablePos = new BlockPos.MutableBlockPos();
 

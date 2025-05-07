@@ -2,6 +2,7 @@ package cobblemon.creatified.item;
 
 import com.cobblemon.mod.common.entity.pokemon.PokemonEntity;
 import com.cobblemon.mod.common.net.messages.client.effect.SpawnSnowstormEntityParticlePacket;
+import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerLevel;
@@ -10,7 +11,9 @@ import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.decoration.ArmorStand;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -34,40 +37,60 @@ public class TestParticleItem extends Item {
 
     @Override
     public InteractionResult interactLivingEntity(ItemStack stack, Player player, LivingEntity target, InteractionHand hand) {
-        if (!(target instanceof PokemonEntity pokemonEntity) || !player.getMainHandItem().is(stack.getItem())) {
+        if (!player.getMainHandItem().is(stack.getItem()))
             return super.interactLivingEntity(stack, player, target, hand);
-        }
 
         Level level = player.level();
-        if (!level.isClientSide) {
-            // Play test sound
-            level.playSound(null, target.blockPosition(), SoundEvents.TOTEM_USE, SoundSource.PLAYERS, 1.0f, 1.0f);
+        if (level.isClientSide)
+            return InteractionResult.PASS;
 
-            // Build evo_particles effect
-            SpawnSnowstormEntityParticlePacket packet = new SpawnSnowstormEntityParticlePacket(
-                    cobblemonResource("evo_sparkleburst"),
-                    pokemonEntity.getId(),
-                    List.of("evo_sparkleburst", "middle"),
-                    null,
-                    null
-            );
+        ServerLevel serverLevel = (ServerLevel) level;
+        MinecraftServer server = serverLevel.getServer();
 
-            // Send to nearby players
-            MinecraftServer server = ((ServerLevel) level).getServer();
-            List<ServerPlayer> players = server.getPlayerList().getPlayers();
+        // Play debug sound
+        level.playSound(null, target.blockPosition(), SoundEvents.TOTEM_USE, SoundSource.PLAYERS, 1.0f, 1.0f);
 
-            for (ServerPlayer p : players) {
-                if (p.level().dimension().equals(level.dimension()) &&
-                        p.distanceToSqr(target) <= 64 * 64) {
-                    packet.sendToPlayer(p);
-                }
-            }
+        Entity anchor;
+        List<String> particleBones;
 
-            // Output debug message
-            player.sendSystemMessage(Component.literal("✨ Triggered evo_particles animation."));
-            return InteractionResult.SUCCESS;
+        if (target instanceof PokemonEntity) {
+            // Use the actual Pokémon model as the target
+            anchor = target;
+            particleBones = List.of("evo_sparkleburst", "middle");
+        } else {
+            // Create invisible Armor Stand as anchor
+            BlockPos pos = target.blockPosition();
+            ArmorStand marker = new ArmorStand(serverLevel, pos.getX() + 0.5, pos.getY(), pos.getZ() + 0.5);
+            marker.setInvisible(true);
+            marker.setNoGravity(true);
+            marker.setInvulnerable(true);
+            // Can't set marker flag, but this is sufficient for particle anchoring
+            serverLevel.addFreshEntity(marker);
+
+            anchor = marker;
+            particleBones = List.of("evo_sparkleburst");
         }
 
-        return InteractionResult.PASS;
+        // Build evo_particles effect
+        SpawnSnowstormEntityParticlePacket packet = new SpawnSnowstormEntityParticlePacket(
+                cobblemonResource("shiny_ring2"),
+                anchor.getId(),
+                List.of(), // <- No bone names
+                null,
+                null
+        );
+
+
+        // Send to nearby players
+        for (ServerPlayer p : server.getPlayerList().getPlayers()) {
+            if (p.level().dimension().equals(level.dimension()) &&
+                    p.distanceToSqr(anchor) <= 64 * 64) {
+                packet.sendToPlayer(p);
+            }
+        }
+
+        // Output debug message
+        player.sendSystemMessage(Component.literal("✨ Triggered evo_particles animation."));
+        return InteractionResult.SUCCESS;
     }
 }
