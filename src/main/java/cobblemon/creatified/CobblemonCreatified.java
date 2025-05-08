@@ -2,19 +2,20 @@ package cobblemon.creatified;
 
 import cobblemon.creatified.block.ModBlocks;
 import cobblemon.creatified.block.entity.ModBlockEntities;
+import cobblemon.creatified.client.event.ClientEvents;
 import cobblemon.creatified.datacomponent.ModComponents;
-import cobblemon.creatified.event.ClientEvents;
 import cobblemon.creatified.event.CobblemonSpawnBlocker;
 import cobblemon.creatified.event.ModEvents;
 import cobblemon.creatified.item.ModItems;
+import cobblemon.creatified.network.ModNetwork;
 import com.mojang.logging.LogUtils;
-import net.minecraft.client.Minecraft;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraft.world.level.block.Blocks;
+import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.ModList;
@@ -22,9 +23,11 @@ import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.config.ModConfig;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
+import net.neoforged.fml.loading.FMLEnvironment;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
+
 import org.slf4j.Logger;
 
 @Mod(CobblemonCreatified.MODID)
@@ -80,12 +83,15 @@ public class CobblemonCreatified {
         CREATIVE_MODE_TABS.register(modEventBus);
         ModComponents.DATA_COMPONENTS.register(modEventBus);
 
-        // Setup events
+        // Setup lifecycle events
         modEventBus.addListener(this::commonSetup);
         modEventBus.addListener(CobblemonCreatified::onClientSetup);
+        modEventBus.addListener(ModNetwork::register); // ✅ Register networking handlers
 
-        // Register Forge event listeners
-        NeoForge.EVENT_BUS.register(new ClientEvents());
+        // Register client-only listeners
+        if (FMLEnvironment.dist == Dist.CLIENT) {
+            NeoForge.EVENT_BUS.register(new ClientEvents());
+        }
 
         // Load config
         modContainer.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
@@ -109,7 +115,11 @@ public class CobblemonCreatified {
     private static void onClientSetup(final FMLClientSetupEvent event) {
         event.enqueueWork(() -> {
             LOGGER.info("HELLO FROM CLIENT SETUP");
-            LOGGER.info("MINECRAFT NAME >> {}", Minecraft.getInstance().getUser().getName());
+            try {
+                LOGGER.info("MINECRAFT NAME >> {}", net.minecraft.client.Minecraft.getInstance().getUser().getName());
+            } catch (Throwable t) {
+                LOGGER.warn("Unable to retrieve Minecraft client name in client setup.", t);
+            }
         });
     }
 

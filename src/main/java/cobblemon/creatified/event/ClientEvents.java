@@ -1,4 +1,4 @@
-package cobblemon.creatified.event;
+package cobblemon.creatified.client.event;
 
 import cobblemon.creatified.block.ModBlocks;
 import cobblemon.creatified.block.RepelBlock;
@@ -8,9 +8,12 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.api.distmarker.OnlyIn;
 import net.neoforged.neoforge.client.event.ClientTickEvent;
 import net.neoforged.bus.api.SubscribeEvent;
 
+@OnlyIn(Dist.CLIENT)
 public class ClientEvents {
 
     private static final int MAX_RANGE = 64;            // Max horizontal repel radius
@@ -27,8 +30,6 @@ public class ClientEvents {
 
         tickCounter++;
         if (tickCounter % 5 != 0) return;
-
-        BlockPos playerPos = mc.player.blockPosition();
 
         BlockPos selectedPos = null;
         int effectiveRadius = MAX_RANGE;
@@ -68,8 +69,8 @@ public class ClientEvents {
     }
 
     private void drawXParticles(Minecraft mc, double centerX, double y, double centerZ, int radius) {
-        int count = 13; // Fewer particles
-        double maxOffset = radius * 0.5; // 50% range for X arms
+        int count = 13;
+        double maxOffset = radius * 0.5;
 
         for (int i = 0; i <= count; i++) {
             double offset = maxOffset * (i / (double) count - 0.5) * 2;

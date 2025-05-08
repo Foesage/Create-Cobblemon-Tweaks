@@ -1,49 +1,55 @@
-modLoader="javafml"
-loaderVersion="${loader_version_range}"
-license="${mod_license}"
+modLoader = "javafml"
+loaderVersion = "[2,)" # Requires JavaFML 2.0 or newer
+license = "MIT"
 
 [[mods]]
-modId="${mod_id}"
-version="${mod_version}"
-displayName="${mod_name}"
-authors="${mod_authors}"
-description='''${mod_description}'''
+modId = "cobblemoncreatified"
+version = "1.0.0"
+displayName = "Cobblemon Creatified"
+authors = "YourNameHere"
+description = '''
+Enhances Cobblemon with custom spawns, repel mechanics, and shiny token mechanics.
+Fully compatible with Create and dedicated servers.
+'''
+displayTest = "IGNORE_ALL_VERSION" # ✅ Ensures it's safe to load on dedicated servers
 
-# ✅ Correct Mixin config reference
+# Optional mixins configuration (only if you're using mixins)
 [[mixins]]
-config="cobblemon/creatified/mixins.json"
+config = "cobblemon/creatified/mixins.json"
 
-[[dependencies.${mod_id}]]
-modId="neoforge"
-type="required"
-versionRange="${neo_version_range}"
-ordering="NONE"
-side="BOTH"
+# Required dependencies
+[[dependencies.cobblemoncreatified]]
+modId = "neoforge"
+type = "required"
+versionRange = "[21.1.133,)"
+ordering = "NONE"
+side = "BOTH"
 
-[[dependencies.${mod_id}]]
-modId="minecraft"
-type="required"
-versionRange="${minecraft_version_range}"
-ordering="NONE"
-side="BOTH"
+[[dependencies.cobblemoncreatified]]
+modId = "minecraft"
+type = "required"
+versionRange = "[1.21.1,)"
+ordering = "NONE"
+side = "BOTH"
 
-[[dependencies.${mod_id}]]
-modId="create"
-type="required"
-versionRange="[0.6.0.4,)"
-ordering="NONE"
-side="BOTH"
+[[dependencies.cobblemoncreatified]]
+modId = "create"
+type = "required"
+versionRange = "[0.6.0.4,)"
+ordering = "NONE"
+side = "BOTH"
 
-[[dependencies.${mod_id}]]
-modId="cobblemon"
-type="required"
-versionRange="[1.6.1,)"
-ordering="NONE"
-side="BOTH"
+[[dependencies.cobblemoncreatified]]
+modId = "cobblemon"
+type = "required"
+versionRange = "[1.6.1,)"
+ordering = "NONE"
+side = "BOTH"
 
-[[dependencies.${mod_id}]]
-modId="spawn_notification"
-type="optional"
-versionRange="*"
-ordering="NONE"
-side="BOTH"
+# Optional compatibility with spawn notification mod
+[[dependencies.cobblemoncreatified]]
+modId = "spawn_notification"
+type = "optional"
+versionRange = "*"
+ordering = "NONE"
+side = "BOTH"

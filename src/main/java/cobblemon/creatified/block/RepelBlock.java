@@ -1,5 +1,7 @@
 package cobblemon.creatified.block;
 
+import cobblemon.creatified.network.ModNetwork;
+import cobblemon.creatified.network.packet.RepelRangeParticlesPacket;
 import cobblemon.creatified.tracker.ActiveRepelBlockTracker;
 import com.cobblemon.mod.common.CobblemonSounds;
 import com.cobblemon.mod.common.net.messages.client.effect.SpawnSnowstormEntityParticlePacket;
@@ -136,6 +138,17 @@ public class RepelBlock extends Block {
                         Component.literal(newRange ? "Showing Repel range." : "Repel range indicator disabled."),
                         true
                 );
+
+                if (newRange && level instanceof ServerLevel serverLevel) {
+                    int redstonePower = serverLevel.getBestNeighborSignal(pos);
+                    int effectiveRadius = Math.max(1, (int)(BLOCKING_RADIUS * (1.0 - redstonePower / 15.0)));
+
+                    for (ServerPlayer serverPlayer : serverLevel.players()) {
+                        if (serverPlayer.blockPosition().closerThan(pos, BLOCKING_RADIUS)) {
+                            ModNetwork.sendTo(serverPlayer, new RepelRangeParticlesPacket(pos, effectiveRadius));
+                        }
+                    }
+                }
             } else {
                 player.playSound(SoundEvents.EXPERIENCE_ORB_PICKUP, 0.8f, 1.4f);
             }
