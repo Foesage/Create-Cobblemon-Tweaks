@@ -84,7 +84,84 @@ public class ModItems {
                 public void appendHoverText(ItemStack stack, Item.TooltipContext context, List<Component> tooltip, TooltipFlag flag) {
                     tooltip.add(Component.translatable("tooltip.cobblemoncreatified.repel_block"));
                 }
+
+
+
+
             });
+
+    public static final DeferredItem<Item> COPPER_BALL_BLANK = ITEMS.register("copper_ball_blank", () -> new Item(new Item.Properties().stacksTo(64)));
+    public static final DeferredItem<Item> COPPER_BALL_HALF = ITEMS.register("copper_ball_half", () -> new Item(new Item.Properties().stacksTo(64)));
+    public static final DeferredItem<Item> COPPER_BALL_BASE = ITEMS.register("copper_ball_base", () -> new Item(new Item.Properties().stacksTo(64)));
+    public static final DeferredItem<Item> POKE_BALL_LID = ITEMS.register("poke_ball_lid", () -> new Item(new Item.Properties().stacksTo(64)));
+    public static final DeferredItem<Item> CITRINE_BALL_LID = ITEMS.register("citrine_ball_lid", () -> new Item(new Item.Properties().stacksTo(64)));
+    public static final DeferredItem<Item> VERDANT_BALL_LID = ITEMS.register("verdant_ball_lid", () -> new Item(new Item.Properties().stacksTo(64)));
+    public static final DeferredItem<Item> AZURE_BALL_LID = ITEMS.register("azure_ball_lid", () -> new Item(new Item.Properties().stacksTo(64)));
+    public static final DeferredItem<Item> ROSEATE_BALL_LID = ITEMS.register("roseate_ball_lid", () -> new Item(new Item.Properties().stacksTo(64)));
+    public static final DeferredItem<Item> SLATE_BALL_LID = ITEMS.register("slate_ball_lid", () -> new Item(new Item.Properties().stacksTo(64)));
+    public static final DeferredItem<Item> PREMIER_BALL_LID = ITEMS.register("premier_ball_lid", () -> new Item(new Item.Properties().stacksTo(64)));
+    public static final DeferredItem<Item> SAFARI_BALL_LID = ITEMS.register("safari_ball_lid", () -> new Item(new Item.Properties().stacksTo(64)));
+    public static final DeferredItem<Item> HEAL_BALL_LID = ITEMS.register("heal_ball_lid", () -> new Item(new Item.Properties().stacksTo(64)));
+    public static final DeferredItem<Item> HEAL_BALL_BASE = ITEMS.register("heal_ball_base", () -> new Item(new Item.Properties().stacksTo(64)));
+    public static final DeferredItem<Item> RED_APRICORN_ZEST = ITEMS.register("red_apricorn_zest", () -> new Item(new Item.Properties().stacksTo(64)));
+    public static final DeferredItem<Item> YELLOW_APRICORN_ZEST = ITEMS.register("yellow_apricorn_zest", () -> new Item(new Item.Properties().stacksTo(64)));
+    public static final DeferredItem<Item> GREEN_APRICORN_ZEST = ITEMS.register("green_apricorn_zest", () -> new Item(new Item.Properties().stacksTo(64)));
+    public static final DeferredItem<Item> BLUE_APRICORN_ZEST = ITEMS.register("blue_apricorn_zest", () -> new Item(new Item.Properties().stacksTo(64)));
+    public static final DeferredItem<Item> PINK_APRICORN_ZEST = ITEMS.register("pink_apricorn_zest", () -> new Item(new Item.Properties().stacksTo(64)));
+    public static final DeferredItem<Item> BLACK_APRICORN_ZEST = ITEMS.register("black_apricorn_zest", () -> new Item(new Item.Properties().stacksTo(64)));
+    public static final DeferredItem<Item> WHITE_APRICORN_ZEST = ITEMS.register("white_apricorn_zest", () -> new Item(new Item.Properties().stacksTo(64)));
+    public static final DeferredItem<Item> IRON_BALL_BLANK = ITEMS.register("iron_ball_blank", () -> new Item(new Item.Properties().stacksTo(64)));
+    public static final DeferredItem<Item> IRON_BALL_HALF = ITEMS.register("iron_ball_half", () -> new Item(new Item.Properties().stacksTo(64)));
+    public static final DeferredItem<Item> IRON_BALL_BASE = ITEMS.register("iron_ball_base", () -> new Item(new Item.Properties().stacksTo(64)));
+    public static final DeferredItem<Item> GREAT_BALL_LID = ITEMS.register("great_ball_lid", () -> new Item(new Item.Properties().stacksTo(64)));
+    public static final DeferredItem<Item> FAST_BALL_LID = ITEMS.register("fast_ball_lid", () -> new Item(new Item.Properties().stacksTo(64)));
+    public static final DeferredItem<Item> LEVEL_BALL_LID = ITEMS.register("level_ball_lid", () -> new Item(new Item.Properties().stacksTo(64)));
+    public static final DeferredItem<Item> LURE_BALL_LID = ITEMS.register("lure_ball_lid", () -> new Item(new Item.Properties().stacksTo(64)));
+    public static final DeferredItem<Item> HEAVY_BALL_LID = ITEMS.register("heavy_ball_lid", () -> new Item(new Item.Properties().stacksTo(64)));
+    public static final DeferredItem<Item> FRIEND_BALL_LID = ITEMS.register("friend_ball_lid", () -> new Item(new Item.Properties().stacksTo(64)));
+    public static final DeferredItem<Item> MOON_BALL_LID = ITEMS.register("moon_ball_lid", () -> new Item(new Item.Properties().stacksTo(64)));
+    public static final DeferredItem<Item> SPORT_BALL_LID = ITEMS.register("sport_ball_lid", () -> new Item(new Item.Properties().stacksTo(64)));
+    public static final DeferredItem<Item> PARK_BALL_LID = ITEMS.register("park_ball_lid", () -> new Item(new Item.Properties().stacksTo(64)));
+    public static final DeferredItem<Item> NET_BALL_LID = ITEMS.register("net_ball_lid", () -> new Item(new Item.Properties().stacksTo(64)));
+    public static final DeferredItem<Item> DIVE_BALL_LID = ITEMS.register("dive_ball_lid", () -> new Item(new Item.Properties().stacksTo(64)));
+    public static final DeferredItem<Item> NEST_BALL_LID = ITEMS.register("nest_ball_lid", () -> new Item(new Item.Properties().stacksTo(64)));
+    public static final DeferredItem<Item> RED_APRICORN_FLOUR = ITEMS.register("red_apricorn_flour", () -> new Item(new Item.Properties().stacksTo(64)));
+    public static final DeferredItem<Item> YELLOW_APRICORN_FLOUR = ITEMS.register("yellow_apricorn_flour", () -> new Item(new Item.Properties().stacksTo(64)));
+    public static final DeferredItem<Item> GREEN_APRICORN_FLOUR = ITEMS.register("green_apricorn_flour", () -> new Item(new Item.Properties().stacksTo(64)));
+    public static final DeferredItem<Item> BLUE_APRICORN_FLOUR = ITEMS.register("blue_apricorn_flour", () -> new Item(new Item.Properties().stacksTo(64)));
+    public static final DeferredItem<Item> PINK_APRICORN_FLOUR = ITEMS.register("pink_apricorn_flour", () -> new Item(new Item.Properties().stacksTo(64)));
+    public static final DeferredItem<Item> BLACK_APRICORN_FLOUR = ITEMS.register("black_apricorn_flour", () -> new Item(new Item.Properties().stacksTo(64)));
+    public static final DeferredItem<Item> RED_APRICORN_MASH = ITEMS.register("red_apricorn_mash", () -> new Item(new Item.Properties().stacksTo(64)));
+    public static final DeferredItem<Item> YELLOW_APRICORN_MASH = ITEMS.register("yellow_apricorn_mash", () -> new Item(new Item.Properties().stacksTo(64)));
+    public static final DeferredItem<Item> GREEN_APRICORN_MASH = ITEMS.register("green_apricorn_mash", () -> new Item(new Item.Properties().stacksTo(64)));
+    public static final DeferredItem<Item> BLUE_APRICORN_MASH = ITEMS.register("blue_apricorn_mash", () -> new Item(new Item.Properties().stacksTo(64)));
+    public static final DeferredItem<Item> PINK_APRICORN_MASH = ITEMS.register("pink_apricorn_mash", () -> new Item(new Item.Properties().stacksTo(64)));
+    public static final DeferredItem<Item> BLACK_APRICORN_MASH = ITEMS.register("black_apricorn_mash", () -> new Item(new Item.Properties().stacksTo(64)));
+    public static final DeferredItem<Item> WHITE_APRICORN_MASH = ITEMS.register("white_apricorn_mash", () -> new Item(new Item.Properties().stacksTo(64)));
+    public static final DeferredItem<Item> GOLD_BALL_BLANK = ITEMS.register("gold_ball_blank", () -> new Item(new Item.Properties().stacksTo(64)));
+    public static final DeferredItem<Item> GOLD_BALL_HALF = ITEMS.register("gold_ball_half", () -> new Item(new Item.Properties().stacksTo(64)));
+    public static final DeferredItem<Item> GOLD_BALL_BASE = ITEMS.register("gold_ball_base", () -> new Item(new Item.Properties().stacksTo(64)));
+    public static final DeferredItem<Item> ULTRA_BALL_LID = ITEMS.register("ultra_ball_lid", () -> new Item(new Item.Properties().stacksTo(64)));
+    public static final DeferredItem<Item> LOVE_BALL_LID = ITEMS.register("love_ball_lid", () -> new Item(new Item.Properties().stacksTo(64)));
+    public static final DeferredItem<Item> REPEAT_BALL_LID = ITEMS.register("repeat_ball_lid", () -> new Item(new Item.Properties().stacksTo(64)));
+    public static final DeferredItem<Item> TIMER_BALL_LID = ITEMS.register("timer_ball_lid", () -> new Item(new Item.Properties().stacksTo(64)));
+    public static final DeferredItem<Item> LUXURY_BALL_LID = ITEMS.register("luxury_ball_lid", () -> new Item(new Item.Properties().stacksTo(64)));
+    public static final DeferredItem<Item> DUSK_BALL_LID = ITEMS.register("dusk_ball_lid", () -> new Item(new Item.Properties().stacksTo(64)));
+    public static final DeferredItem<Item> QUICK_BALL_LID = ITEMS.register("quick_ball_lid", () -> new Item(new Item.Properties().stacksTo(64)));
+    public static final DeferredItem<Item> RED_APRICORN_POWDER = ITEMS.register("red_apricorn_powder", () -> new Item(new Item.Properties().stacksTo(64)));
+    public static final DeferredItem<Item> YELLOW_APRICORN_POWDER = ITEMS.register("yellow_apricorn_powder", () -> new Item(new Item.Properties().stacksTo(64)));
+    public static final DeferredItem<Item> GREEN_APRICORN_POWDER = ITEMS.register("green_apricorn_powder", () -> new Item(new Item.Properties().stacksTo(64)));
+    public static final DeferredItem<Item> BLUE_APRICORN_POWDER = ITEMS.register("blue_apricorn_powder", () -> new Item(new Item.Properties().stacksTo(64)));
+    public static final DeferredItem<Item> PINK_APRICORN_POWDER = ITEMS.register("pink_apricorn_powder", () -> new Item(new Item.Properties().stacksTo(64)));
+    public static final DeferredItem<Item> BLACK_APRICORN_POWDER = ITEMS.register("black_apricorn_powder", () -> new Item(new Item.Properties().stacksTo(64)));
+    public static final DeferredItem<Item> WHITE_APRICORN_POWDER = ITEMS.register("white_apricorn_powder", () -> new Item(new Item.Properties().stacksTo(64)));
+    public static final DeferredItem<Item> RED_APRICORN_PRIMER = ITEMS.register("red_apricorn_primer", () -> new Item(new Item.Properties().stacksTo(64)));
+    public static final DeferredItem<Item> YELLOW_APRICORN_PRIMER = ITEMS.register("yellow_apricorn_primer", () -> new Item(new Item.Properties().stacksTo(64)));
+    public static final DeferredItem<Item> GREEN_APRICORN_PRIMER = ITEMS.register("green_apricorn_primer", () -> new Item(new Item.Properties().stacksTo(64)));
+    public static final DeferredItem<Item> BLUE_APRICORN_PRIMER = ITEMS.register("blue_apricorn_primer", () -> new Item(new Item.Properties().stacksTo(64)));
+    public static final DeferredItem<Item> PINK_APRICORN_PRIMER = ITEMS.register("pink_apricorn_primer", () -> new Item(new Item.Properties().stacksTo(64)));
+    public static final DeferredItem<Item> BLACK_APRICORN_PRIMER = ITEMS.register("black_apricorn_primer", () -> new Item(new Item.Properties().stacksTo(64)));
+    public static final DeferredItem<Item> WHITE_APRICORN_PRIMER = ITEMS.register("white_apricorn_primer", () -> new Item(new Item.Properties().stacksTo(64)));
 
     // ✅ Luring Incense Block
     public static final DeferredItem<Item> LURING_INCENSE_ITEM = ITEMS.register("luring_incense",

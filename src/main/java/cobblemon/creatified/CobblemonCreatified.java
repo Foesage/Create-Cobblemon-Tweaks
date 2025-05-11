@@ -70,6 +70,7 @@ public class CobblemonCreatified {
                         output.accept(ModItems.SPEED_CHARCOAL_BOTTLECAP.get());
                         output.accept(ModItems.INERT_SHINY_TOKEN.get());
                         output.accept(ModItems.LURING_INCENSE_ITEM.get());
+                        output.accept(ModItems.COPPER_BALL_BLANK.get());
                     })
                     .build());
 
