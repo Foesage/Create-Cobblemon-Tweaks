@@ -2,7 +2,6 @@ package cobblemon.creatified.block.entity;
 
 import cobblemon.creatified.CobblemonCreatified;
 import cobblemon.creatified.block.ModBlocks;
-import cobblemon.creatified.block.entity.LuringIncenseBlockEntity;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.neoforged.bus.api.IEventBus;
@@ -19,6 +18,13 @@ public class ModBlockEntities {
                     () -> BlockEntityType.Builder.of(
                             LuringIncenseBlockEntity::new,
                             ModBlocks.LURING_INCENSE.get()
+                    ).build(null));
+
+    public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<RepelBlockEntity>> REPEL_BLOCK_ENTITY =
+            BLOCK_ENTITIES.register("repel_block",
+                    () -> BlockEntityType.Builder.of(
+                            RepelBlockEntity::new,
+                            ModBlocks.REPEL_BLOCK.get()
                     ).build(null));
 
     public static void register(IEventBus eventBus) {

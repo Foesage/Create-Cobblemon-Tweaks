@@ -7,7 +7,6 @@ import cobblemon.creatified.datacomponent.ModComponents;
 import cobblemon.creatified.event.CobblemonSpawnBlocker;
 import cobblemon.creatified.event.ModEvents;
 import cobblemon.creatified.item.ModItems;
-import cobblemon.creatified.network.ModNetwork;
 import com.mojang.logging.LogUtils;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
@@ -83,20 +82,24 @@ public class CobblemonCreatified {
         CREATIVE_MODE_TABS.register(modEventBus);
         ModComponents.DATA_COMPONENTS.register(modEventBus);
 
-        // Setup lifecycle events
+        // Lifecycle events
         modEventBus.addListener(this::commonSetup);
         modEventBus.addListener(CobblemonCreatified::onClientSetup);
-        modEventBus.addListener(ModNetwork::register); // ✅ Register networking handlers
 
-        // Register client-only listeners
-        if (FMLEnvironment.dist == Dist.CLIENT) {
-            NeoForge.EVENT_BUS.register(new ClientEvents());
-        }
+        // Server tick handler registration
+
+
+        // Client-only listeners
+// Disabled because ClientEvents has no active @SubscribeEvent methods
+// if (FMLEnvironment.dist == Dist.CLIENT) {
+//     NeoForge.EVENT_BUS.register(new ClientEvents());
+// }
+
 
         // Load config
         modContainer.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
 
-        // Optional integration logging
+        // Optional mixin logging
         if (ModList.get().isLoaded("spawn_notification")) {
             LOGGER.info("Spawn Notification detected, enabling BroadcastSpawnMixin");
         } else {

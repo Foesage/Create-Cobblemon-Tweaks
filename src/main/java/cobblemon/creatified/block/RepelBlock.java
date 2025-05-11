@@ -1,7 +1,6 @@
 package cobblemon.creatified.block;
 
-import cobblemon.creatified.network.ModNetwork;
-import cobblemon.creatified.network.packet.RepelRangeParticlesPacket;
+import cobblemon.creatified.block.entity.RepelBlockEntity;
 import cobblemon.creatified.tracker.ActiveRepelBlockTracker;
 import com.cobblemon.mod.common.CobblemonSounds;
 import com.cobblemon.mod.common.net.messages.client.effect.SpawnSnowstormEntityParticlePacket;
@@ -13,7 +12,6 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
-import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.ItemInteractionResult;
 import net.minecraft.world.entity.player.Player;
@@ -22,8 +20,12 @@ import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.EntityBlock;
 import net.minecraft.world.level.block.Mirror;
 import net.minecraft.world.level.block.Rotation;
+import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.entity.BlockEntityTicker;
+import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
@@ -38,13 +40,13 @@ import java.util.List;
 
 import static com.cobblemon.mod.common.util.MiscUtilsKt.cobblemonResource;
 
-public class RepelBlock extends Block {
+public class RepelBlock extends Block implements EntityBlock {
 
     public static final DirectionProperty FACING = DirectionProperty.create("facing", Direction.Plane.HORIZONTAL);
     public static final BooleanProperty POWERED = BooleanProperty.create("powered");
     public static final BooleanProperty SHOWING_RANGE = BooleanProperty.create("showing_range");
 
-    private static final int BLOCKING_RADIUS = 64;
+    public static final int BLOCKING_RADIUS = 64;
 
     private static final VoxelShape SHAPE = Shapes.box(
             5.0 / 16.0, 0.0, 5.0 / 16.0,
@@ -104,11 +106,11 @@ public class RepelBlock extends Block {
                                 null
                         );
                         packet.sendToPlayer(player);
+                        serverLevel.sendParticles(player, ParticleTypes.CAMPFIRE_COSY_SMOKE, true, pos.getX() + 0.5, pos.getY() + 1.0, pos.getZ() + 0.5, 10, 0.2, 0.1, 0.2, 0.01);
                     }
                 }
             }
         }
-
         super.onPlace(state, level, pos, oldState, isMoving);
     }
 
@@ -128,27 +130,24 @@ public class RepelBlock extends Block {
         boolean isCrouching = player.isCrouching();
 
         if (isEmptyHand && isCrouching) {
-            boolean newRange = !state.getValue(SHOWING_RANGE);
+            boolean currentlyActive = state.getValue(SHOWING_RANGE);
 
             if (!level.isClientSide) {
-                BlockState updated = state.setValue(SHOWING_RANGE, newRange);
-                level.setBlock(pos, updated, 3);
-
-                player.displayClientMessage(
-                        Component.literal(newRange ? "Showing Repel range." : "Repel range indicator disabled."),
-                        true
-                );
-
-                if (newRange && level instanceof ServerLevel serverLevel) {
-                    int redstonePower = serverLevel.getBestNeighborSignal(pos);
-                    int effectiveRadius = Math.max(1, (int)(BLOCKING_RADIUS * (1.0 - redstonePower / 15.0)));
-
-                    for (ServerPlayer serverPlayer : serverLevel.players()) {
-                        if (serverPlayer.blockPosition().closerThan(pos, BLOCKING_RADIUS)) {
-                            ModNetwork.sendTo(serverPlayer, new RepelRangeParticlesPacket(pos, effectiveRadius));
+                for (BlockPos otherPos : ActiveRepelBlockTracker.ACTIVE_BLOCKS) {
+                    if (!otherPos.equals(pos) && otherPos.closerThan(pos, BLOCKING_RADIUS * 2)) {
+                        BlockState otherState = level.getBlockState(otherPos);
+                        if (otherState.getBlock() instanceof RepelBlock && otherState.getValue(SHOWING_RANGE)) {
+                            level.setBlock(otherPos, otherState.setValue(SHOWING_RANGE, false), 3);
                         }
                     }
                 }
+                BlockState updated = state.setValue(SHOWING_RANGE, !currentlyActive);
+                level.setBlock(pos, updated, 3);
+
+                player.displayClientMessage(
+                        Component.literal(!currentlyActive ? "Showing Repel range." : "Repel range indicator disabled."),
+                        true
+                );
             } else {
                 player.playSound(SoundEvents.EXPERIENCE_ORB_PICKUP, 0.8f, 1.4f);
             }
@@ -175,6 +174,11 @@ public class RepelBlock extends Block {
                             null
                     );
                     packet.sendToPlayer(serverPlayer);
+
+                    double x = pos.getX() + 0.5;
+                    double y = pos.getY() + 1.0;
+                    double z = pos.getZ() + 0.5;
+                    serverLevel.sendParticles(serverPlayer, ParticleTypes.CAMPFIRE_COSY_SMOKE, true, x, y, z, 10, 0.2, 0.1, 0.2, 0.01);
                 }
             }
 
@@ -186,33 +190,6 @@ public class RepelBlock extends Block {
         }
 
         return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
-    }
-
-    @Override
-    public void animateTick(BlockState state, Level level, BlockPos pos, RandomSource random) {
-        if (state.getValue(POWERED)) {
-            double x = pos.getX() + 0.5 + (random.nextDouble() - 0.5) * 0.3;
-            double y = pos.getY() + 1.0 + random.nextDouble() * 0.5;
-            double z = pos.getZ() + 0.5 + (random.nextDouble() - 0.5) * 0.3;
-            double xSpeed = (random.nextDouble() - 0.5) * 0.02;
-            double ySpeed = 0.07;
-            double zSpeed = (random.nextDouble() - 0.5) * 0.02;
-
-            level.addAlwaysVisibleParticle(ParticleTypes.SMOKE, true, x, y, z, xSpeed, ySpeed, zSpeed);
-        }
-
-        if (state.getValue(SHOWING_RANGE)) {
-            double centerX = pos.getX() + 0.5;
-            double centerY = pos.getY() + 1.0;
-            double centerZ = pos.getZ() + 0.5;
-
-            for (int i = 0; i < 100; i++) {
-                double angle = 2 * Math.PI * i / 100;
-                double x = centerX + BLOCKING_RADIUS * Math.cos(angle);
-                double z = centerZ + BLOCKING_RADIUS * Math.sin(angle);
-                level.addParticle(ParticleTypes.END_ROD, x, centerY, z, 0, 0, 0);
-            }
-        }
     }
 
     @Override
@@ -243,5 +220,17 @@ public class RepelBlock extends Block {
     @Override
     public boolean isCollisionShapeFullBlock(BlockState state, BlockGetter level, BlockPos pos) {
         return false;
+    }
+
+    @Override
+    public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
+        return new RepelBlockEntity(pos, state);
+    }
+
+    @Override
+    public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState state, BlockEntityType<T> type) {
+        return level.isClientSide ? null : (lvl, pos, st, be) -> {
+            if (be instanceof RepelBlockEntity repelBe) repelBe.tickServer();
+        };
     }
 }

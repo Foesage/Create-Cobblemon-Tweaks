@@ -23,6 +23,7 @@ public class ClientEvents {
 
     private int tickCounter = 0;
 
+    /*
     @SubscribeEvent
     public void onClientTick(ClientTickEvent.Post event) {
         Minecraft mc = Minecraft.getInstance();
@@ -84,4 +85,5 @@ public class ClientEvents {
                     centerX + offset, y, centerZ - offset, 0, 0, 0);
         }
     }
+    */
 }
