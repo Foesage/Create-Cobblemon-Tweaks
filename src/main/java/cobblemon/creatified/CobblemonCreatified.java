@@ -2,7 +2,6 @@ package cobblemon.creatified;
 
 import cobblemon.creatified.block.ModBlocks;
 import cobblemon.creatified.block.entity.ModBlockEntities;
-import cobblemon.creatified.client.event.ClientEvents;
 import cobblemon.creatified.datacomponent.ModComponents;
 import cobblemon.creatified.event.CobblemonSpawnBlocker;
 import cobblemon.creatified.event.ModEvents;
@@ -11,6 +10,8 @@ import com.mojang.logging.LogUtils;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.client.resources.model.ModelResourceLocation;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraft.world.level.block.Blocks;
@@ -20,13 +21,10 @@ import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.ModList;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.config.ModConfig;
-import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.fml.loading.FMLEnvironment;
-import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
-
 import org.slf4j.Logger;
 
 @Mod(CobblemonCreatified.MODID)
@@ -69,13 +67,22 @@ public class CobblemonCreatified {
                         output.accept(ModItems.SPDEF_CHARCOAL_BOTTLECAP.get());
                         output.accept(ModItems.SPEED_CHARCOAL_BOTTLECAP.get());
                         output.accept(ModItems.INERT_SHINY_TOKEN.get());
-                        output.accept(ModItems.LURING_INCENSE_ITEM.get());
                         output.accept(ModItems.COPPER_BALL_BLANK.get());
+                        output.accept(ModItems.COPPER_BALL_BLANK_HALF.get());
                     })
                     .build());
 
+    public static ResourceLocation resource(String path) {
+        return ResourceLocation.fromNamespaceAndPath(MODID, path);
+    }
+
+
+
+    public static ModelResourceLocation model(String path) {
+        return new ModelResourceLocation(resource(path), "inventory");
+    }
+
     public CobblemonCreatified(IEventBus modEventBus, ModContainer modContainer) {
-        // Register content
         ModItems.register(modEventBus);
         ModBlocks.register(modEventBus);
         ModBlockEntities.register(modEventBus);
@@ -83,24 +90,14 @@ public class CobblemonCreatified {
         CREATIVE_MODE_TABS.register(modEventBus);
         ModComponents.DATA_COMPONENTS.register(modEventBus);
 
-        // Lifecycle events
         modEventBus.addListener(this::commonSetup);
-        modEventBus.addListener(CobblemonCreatified::onClientSetup);
 
-        // Server tick handler registration
+        if (FMLEnvironment.dist == Dist.CLIENT) {
+            // Reserved for client setup
+        }
 
-
-        // Client-only listeners
-// Disabled because ClientEvents has no active @SubscribeEvent methods
-// if (FMLEnvironment.dist == Dist.CLIENT) {
-//     NeoForge.EVENT_BUS.register(new ClientEvents());
-// }
-
-
-        // Load config
         modContainer.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
 
-        // Optional mixin logging
         if (ModList.get().isLoaded("spawn_notification")) {
             LOGGER.info("Spawn Notification detected, enabling BroadcastSpawnMixin");
         } else {
@@ -113,17 +110,6 @@ public class CobblemonCreatified {
             ModEvents.registerListeners();
             CobblemonSpawnBlocker.register();
             logConfigValues();
-        });
-    }
-
-    private static void onClientSetup(final FMLClientSetupEvent event) {
-        event.enqueueWork(() -> {
-            LOGGER.info("HELLO FROM CLIENT SETUP");
-            try {
-                LOGGER.info("MINECRAFT NAME >> {}", net.minecraft.client.Minecraft.getInstance().getUser().getName());
-            } catch (Throwable t) {
-                LOGGER.warn("Unable to retrieve Minecraft client name in client setup.", t);
-            }
         });
     }
 

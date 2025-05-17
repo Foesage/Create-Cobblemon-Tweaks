@@ -15,7 +15,14 @@ public class ModComponents {
     public static final DeferredHolder<DataComponentType<?>, DataComponentType<Integer>> SHINY_CHARGE =
             DATA_COMPONENTS.register("shiny_charge", () ->
                     DataComponentType.<Integer>builder()
-                            .persistent(Codec.INT) // ✅ use Codec.INT instead of IntTag.CODEC
+                            .persistent(Codec.INT)
+                            .build()
+            );
+
+    public static final DeferredHolder<DataComponentType<?>, DataComponentType<Boolean>> ALT_MODEL =
+            DATA_COMPONENTS.register("alt_model", () ->
+                    DataComponentType.<Boolean>builder()
+                            .persistent(Codec.BOOL)
                             .build()
             );
 }

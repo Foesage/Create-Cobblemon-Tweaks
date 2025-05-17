@@ -1,0 +1,15 @@
+{
+  "type": "create:cutting",
+  "ingredients": [
+    {
+      "item": "cobblemoncreatified:copper_ball_blank"
+    }
+  ],
+  "processing_time": 60,
+  "results": [
+    {
+      "count": 4,
+      "id": "cobblemoncreatified:copper_ball_half"
+    }
+  ]
+}

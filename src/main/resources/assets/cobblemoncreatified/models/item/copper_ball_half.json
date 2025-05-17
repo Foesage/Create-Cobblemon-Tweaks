@@ -1,0 +1,16 @@
+{
+  "loader": "neoforge:separate_transforms",
+  "gui_light": "front",
+  "base": {
+    "parent": "cobblemoncreatified:item/copper_ball_half_top_model_3d"
+  },
+  "perspectives": {
+    "gui": {
+      "parent": "minecraft:item/generated",
+      "textures": {
+        "layer0": "cobblemoncreatified:item/copper_ball_half"
+      },
+      "gui_light": "front"
+    }
+  }
+}

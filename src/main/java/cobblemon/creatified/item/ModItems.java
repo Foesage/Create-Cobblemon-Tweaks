@@ -90,8 +90,11 @@ public class ModItems {
 
             });
 
+
+
     public static final DeferredItem<Item> COPPER_BALL_BLANK = ITEMS.register("copper_ball_blank", () -> new Item(new Item.Properties().stacksTo(64)));
-    public static final DeferredItem<Item> COPPER_BALL_HALF = ITEMS.register("copper_ball_half", () -> new Item(new Item.Properties().stacksTo(64)));
+    public static final DeferredItem<Item> IRON_BALL_BLANK = ITEMS.register("iron_ball_blank", () -> new Item(new Item.Properties().stacksTo(64)));
+    public static final DeferredItem<Item> COPPER_BALL_BLANK_HALF = ITEMS.register("copper_ball_half", () -> new Item(new Item.Properties().stacksTo(64)));
     public static final DeferredItem<Item> COPPER_BALL_BASE = ITEMS.register("copper_ball_base", () -> new Item(new Item.Properties().stacksTo(64)));
     public static final DeferredItem<Item> POKE_BALL_LID = ITEMS.register("poke_ball_lid", () -> new Item(new Item.Properties().stacksTo(64)));
     public static final DeferredItem<Item> CITRINE_BALL_LID = ITEMS.register("citrine_ball_lid", () -> new Item(new Item.Properties().stacksTo(64)));
@@ -110,7 +113,6 @@ public class ModItems {
     public static final DeferredItem<Item> PINK_APRICORN_ZEST = ITEMS.register("pink_apricorn_zest", () -> new Item(new Item.Properties().stacksTo(64)));
     public static final DeferredItem<Item> BLACK_APRICORN_ZEST = ITEMS.register("black_apricorn_zest", () -> new Item(new Item.Properties().stacksTo(64)));
     public static final DeferredItem<Item> WHITE_APRICORN_ZEST = ITEMS.register("white_apricorn_zest", () -> new Item(new Item.Properties().stacksTo(64)));
-    public static final DeferredItem<Item> IRON_BALL_BLANK = ITEMS.register("iron_ball_blank", () -> new Item(new Item.Properties().stacksTo(64)));
     public static final DeferredItem<Item> IRON_BALL_HALF = ITEMS.register("iron_ball_half", () -> new Item(new Item.Properties().stacksTo(64)));
     public static final DeferredItem<Item> IRON_BALL_BASE = ITEMS.register("iron_ball_base", () -> new Item(new Item.Properties().stacksTo(64)));
     public static final DeferredItem<Item> GREAT_BALL_LID = ITEMS.register("great_ball_lid", () -> new Item(new Item.Properties().stacksTo(64)));
@@ -163,14 +165,7 @@ public class ModItems {
     public static final DeferredItem<Item> BLACK_APRICORN_PRIMER = ITEMS.register("black_apricorn_primer", () -> new Item(new Item.Properties().stacksTo(64)));
     public static final DeferredItem<Item> WHITE_APRICORN_PRIMER = ITEMS.register("white_apricorn_primer", () -> new Item(new Item.Properties().stacksTo(64)));
 
-    // ✅ Luring Incense Block
-    public static final DeferredItem<Item> LURING_INCENSE_ITEM = ITEMS.register("luring_incense",
-            () -> new BlockItem(ModBlocks.LURING_INCENSE.get(), new Item.Properties()) {
-                @Override
-                public void appendHoverText(ItemStack stack, Item.TooltipContext context, List<Component> tooltip, TooltipFlag flag) {
-                    tooltip.add(Component.translatable("tooltip.cobblemoncreatified.luring_incense"));
-                }
-            });
+
 
     public static final DeferredItem<Item> TEST_CLICK_BLOCK_ITEM = ITEMS.register("test_click_block",
             () -> new BlockItem(ModBlocks.TEST_CLICK_BLOCK.get(), new Item.Properties()));

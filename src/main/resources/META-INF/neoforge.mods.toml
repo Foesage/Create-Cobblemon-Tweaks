@@ -6,7 +6,7 @@ license = "MIT"
 modId = "cobblemoncreatified"
 version = "1.0.0"
 displayName = "Cobblemon Creatified"
-authors = "YourNameHere"
+authors = "Foresage"
 description = '''
 Enhances Cobblemon with custom spawns, repel mechanics, and shiny token mechanics.
 Fully compatible with Create and dedicated servers.
@@ -53,3 +53,11 @@ type = "optional"
 versionRange = "*"
 ordering = "NONE"
 side = "BOTH"
+
+
+[[dependencies.cobblemoncreatified]]
+modId = "jei"
+mandatory = false
+versionRange = "[15.19.0,)"
+ordering = "NONE"
+side = "CLIENT"

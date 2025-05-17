@@ -1,7 +1,10 @@
 {
+
   "textures": {
-    "layer0": "cobblemoncreatified:item/copper_ball_blank_3d"
-  },
+    "layer0": "cobblemoncreatified:item/copper_ball_blank_in_hand",
+    "particle": "cobblemoncreatified:item/copper_ball_blank_in_hand"
+  }
+,
   "elements": [
     {
       "name": "top_inner",
@@ -10,11 +13,11 @@
       "rotation": { "angle": 0, "axis": "y", "origin": [0, 4, 4] },
       "faces": {
         "north": { "uv": [2, 4, 4, 6], "texture": "#layer0" },
-        "east": { "uv": [0, 4, 2, 6], "texture": "#layer0" },
+        "east":  { "uv": [0, 4, 2, 6], "texture": "#layer0" },
         "south": { "uv": [6, 4, 8, 6], "texture": "#layer0" },
-        "west": { "uv": [4, 4, 6, 6], "texture": "#layer0" },
-        "up": { "uv": [4, 4, 2, 0], "texture": "#layer0" },
-        "down": { "uv": [6, 0, 4, 4], "texture": "#layer0" }
+        "west":  { "uv": [4, 4, 6, 6], "texture": "#layer0" },
+        "up":    { "uv": [4, 4, 2, 0], "texture": "#layer0" },
+        "down":  { "uv": [6, 0, 4, 4], "texture": "#layer0" }
       }
     },
     {
@@ -24,11 +27,11 @@
       "rotation": { "angle": 0, "axis": "y", "origin": [0, 4, 0] },
       "faces": {
         "north": { "uv": [2, 14, 4, 16], "texture": "#layer0" },
-        "east": { "uv": [0, 14, 2, 16], "texture": "#layer0" },
+        "east":  { "uv": [0, 14, 2, 16], "texture": "#layer0" },
         "south": { "uv": [6, 14, 8, 16], "texture": "#layer0" },
-        "west": { "uv": [4, 14, 6, 16], "texture": "#layer0" },
-        "up": { "uv": [4, 14, 2, 10], "texture": "#layer0" },
-        "down": { "uv": [6, 10, 4, 14], "texture": "#layer0" }
+        "west":  { "uv": [4, 14, 6, 16], "texture": "#layer0" },
+        "up":    { "uv": [4, 14, 2, 10], "texture": "#layer0" },
+        "down":  { "uv": [6, 10, 4, 14], "texture": "#layer0" }
       }
     },
     {
@@ -38,11 +41,11 @@
       "rotation": { "angle": 0, "axis": "y", "origin": [0, 4, 0] },
       "faces": {
         "north": { "uv": [10, 14, 12, 16], "texture": "#layer0" },
-        "east": { "uv": [8, 14, 10, 16], "texture": "#layer0" },
+        "east":  { "uv": [8, 14, 10, 16], "texture": "#layer0" },
         "south": { "uv": [14, 14, 16, 16], "texture": "#layer0" },
-        "west": { "uv": [12, 14, 14, 16], "texture": "#layer0" },
-        "up": { "uv": [12, 14, 10, 10], "texture": "#layer0" },
-        "down": { "uv": [14, 10, 12, 14], "texture": "#layer0" }
+        "west":  { "uv": [12, 14, 14, 16], "texture": "#layer0" },
+        "up":    { "uv": [12, 14, 10, 10], "texture": "#layer0" },
+        "down":  { "uv": [14, 10, 12, 14], "texture": "#layer0" }
       }
     },
     {
@@ -52,11 +55,11 @@
       "rotation": { "angle": 0, "axis": "y", "origin": [0, 4, 0] },
       "faces": {
         "north": { "uv": [10, 4, 12, 6], "texture": "#layer0" },
-        "east": { "uv": [8, 4, 10, 6], "texture": "#layer0" },
+        "east":  { "uv": [8, 4, 10, 6], "texture": "#layer0" },
         "south": { "uv": [14, 4, 16, 6], "texture": "#layer0" },
-        "west": { "uv": [12, 4, 14, 6], "texture": "#layer0" },
-        "up": { "uv": [12, 4, 10, 0], "texture": "#layer0" },
-        "down": { "uv": [14, 0, 12, 4], "texture": "#layer0" }
+        "west":  { "uv": [12, 4, 14, 6], "texture": "#layer0" },
+        "up":    { "uv": [12, 4, 10, 0], "texture": "#layer0" },
+        "down":  { "uv": [14, 0, 12, 4], "texture": "#layer0" }
       }
     }
   ],
@@ -88,25 +91,13 @@
       "translation": [14.5, 7.5, 14.5],
       "scale": [1.8, 1.8, 1.8]
     },
+    "gui": {
+      "rotation": [15, -25, -5],
+      "translation": [2, 3, 0],
+      "scale": [0.65, 0.65, 0.65]
+    },
     "fixed": {
       "translation": [8, 4, 8.5]
     }
-  },
-  "groups": [
-    {
-      "name": "pokeball",
-      "origin": [0, 0, 0],
-      "color": 0,
-      "children": [
-        {
-          "name": "pokeball_lid",
-          "origin": [0, 4, 4],
-          "color": 0,
-          "children": [0, 1]
-        },
-        2,
-        3
-      ]
-    }
-  ]
+  }
 }

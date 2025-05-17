@@ -1,11 +1,12 @@
 {
-  "required": false,
+  "required": true,
   "minVersion": "0.8",
   "package": "cobblemon.creatified.mixin",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
     "BroadcastSpawnMixin",
-    "PlayShinySoundMixin"
+    "PlayShinySoundMixin",
+    "client.ItemRendererMixin"
   ],
   "client": [],
   "server": [],
