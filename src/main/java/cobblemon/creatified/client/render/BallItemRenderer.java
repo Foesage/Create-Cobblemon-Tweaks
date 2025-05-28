@@ -1,25 +1,23 @@
 package cobblemon.creatified.client.render;
 
 import com.mojang.blaze3d.vertex.PoseStack;
-import cobblemon.creatified.CobblemonCreatified;
-import com.simibubi.create.foundation.item.render.CustomRenderedItemModel;
-import com.simibubi.create.foundation.item.render.CustomRenderedItemModelRenderer;
-import com.simibubi.create.foundation.item.render.PartialItemModelRenderer;
-import dev.engine_room.flywheel.lib.model.baked.PartialModel;
 import net.minecraft.client.renderer.MultiBufferSource;
-import net.minecraft.world.item.ItemDisplayContext;
+import net.minecraft.client.resources.model.BakedModel;
 import net.minecraft.world.item.ItemStack;
 
-public class BallItemRenderer extends CustomRenderedItemModelRenderer {
+public class BallItemRenderer {
 
-    private static final PartialModel IN_HAND_MODEL =
-            PartialModel.of(CobblemonCreatified.resource("item/copper_ball_blank/item_in_hand"));
+    // Static entry point called by BallItem#customRender
+    public static void render(ItemStack stack, int x, int y, PoseStack poseStack,
+                              MultiBufferSource buffer, int light, int overlay, BakedModel model) {
 
-    @Override
-    protected void render(ItemStack stack, CustomRenderedItemModel model, PartialItemModelRenderer renderer,
-                          ItemDisplayContext transformType, PoseStack poseStack,
-                          MultiBufferSource buffer, int light, int overlay) {
-        // Match Create: only GUI uses 2D, everything else is 3D
-        renderer.render(transformType == ItemDisplayContext.GUI ? model.getOriginalModel() : IN_HAND_MODEL.get(), light);
+        // TODO: Add custom rendering logic here
+        // For now, we just print a debug message.
+        System.out.println("BallItemRenderer: Rendering " + stack);
+
+        // Example: To render the vanilla baked model (placeholder until you add custom logic)
+        net.minecraft.client.Minecraft mc = net.minecraft.client.Minecraft.getInstance();
+        mc.getItemRenderer().render(stack, net.minecraft.world.item.ItemDisplayContext.NONE,
+                false, poseStack, buffer, light, overlay, model);
     }
 }

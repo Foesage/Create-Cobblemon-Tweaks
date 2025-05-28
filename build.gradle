@@ -58,8 +58,9 @@ runs {
 }
 
 sourceSets.main.resources {
-    srcDir 'src/generated/resources'
+    srcDirs = ['src/main/resources', 'src/generated/resources']
 }
+
 
 configurations {
     runtimeClasspath.extendsFrom localRuntime

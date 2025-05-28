@@ -14,9 +14,9 @@ public abstract class BroadcastSpawnMixin {
     @Inject(method = "handle", at = @At("HEAD"), cancellable = true)
     private static void onHandle(SpawnEvent<?> evt, CallbackInfo ci) {
         Entity entity = evt.getEntity();
-       if (entity == null || entity.isRemoved() || entity.getPersistentData().getBoolean("RepelBlocked")) {
-         System.out.println("[COBBLETWEAKS] Canceling BroadcastSpawn due to RepelBlocked or removed entity!");
-         ci.cancel();
-       }
+        if (entity == null || entity.isRemoved() || entity.getPersistentData().getBoolean("RepelBlocked")) {
+            // System.out.println("[COBBLETWEAKS] Canceling BroadcastSpawn due to RepelBlocked or removed entity!");
+            ci.cancel();
+        }
     }
 }

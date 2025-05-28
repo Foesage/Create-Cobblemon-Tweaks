@@ -8,6 +8,8 @@ import net.minecraft.world.item.*;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
+import com.simibubi.create.AllTags.AllItemTags;
+import net.neoforged.neoforge.common.Tags;
 
 import java.util.List;
 
@@ -92,7 +94,9 @@ public class ModItems {
 
 
 
-    public static final DeferredItem<Item> COPPER_BALL_BLANK = ITEMS.register("copper_ball_blank", () -> new Item(new Item.Properties().stacksTo(64)));
+    public static final DeferredItem<Item> COPPER_BALL_BLANK = ITEMS.register("copper_ball_blank", () -> new BallItem(new Item.Properties().stacksTo(64)));
+
+
     public static final DeferredItem<Item> IRON_BALL_BLANK = ITEMS.register("iron_ball_blank", () -> new Item(new Item.Properties().stacksTo(64)));
     public static final DeferredItem<Item> COPPER_BALL_BLANK_HALF = ITEMS.register("copper_ball_half", () -> new Item(new Item.Properties().stacksTo(64)));
     public static final DeferredItem<Item> COPPER_BALL_BASE = ITEMS.register("copper_ball_base", () -> new Item(new Item.Properties().stacksTo(64)));

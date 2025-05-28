@@ -2,6 +2,7 @@ package cobblemon.creatified;
 
 import cobblemon.creatified.block.ModBlocks;
 import cobblemon.creatified.block.entity.ModBlockEntities;
+import cobblemon.creatified.client.ModClientSetup; // <-- Added import
 import cobblemon.creatified.datacomponent.ModComponents;
 import cobblemon.creatified.event.CobblemonSpawnBlocker;
 import cobblemon.creatified.event.ModEvents;
@@ -76,8 +77,6 @@ public class CobblemonCreatified {
         return ResourceLocation.fromNamespaceAndPath(MODID, path);
     }
 
-
-
     public static ModelResourceLocation model(String path) {
         return new ModelResourceLocation(resource(path), "inventory");
     }
@@ -93,7 +92,7 @@ public class CobblemonCreatified {
         modEventBus.addListener(this::commonSetup);
 
         if (FMLEnvironment.dist == Dist.CLIENT) {
-            // Reserved for client setup
+            modEventBus.addListener(ModClientSetup::onClientSetup); // <-- Register client setup for item predicates, etc.
         }
 
         modContainer.registerConfig(ModConfig.Type.COMMON, Config.SPEC);

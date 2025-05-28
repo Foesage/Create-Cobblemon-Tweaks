@@ -1,15 +1,14 @@
 package cobblemon.creatified.item;
 
 import cobblemon.creatified.client.render.BallItemRenderer;
-import com.simibubi.create.foundation.item.render.SimpleCustomRenderer;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import com.mojang.blaze3d.vertex.PoseStack;
+import net.minecraft.client.renderer.MultiBufferSource;
+import net.minecraft.client.resources.model.BakedModel;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.api.distmarker.OnlyIn;
-import net.neoforged.neoforge.client.extensions.common.IClientItemExtensions;
-
-import java.util.function.Consumer;
 
 public class BallItem extends Item {
 
@@ -23,10 +22,9 @@ public class BallItem extends Item {
         return false;
     }
 
-    @Override
     @OnlyIn(Dist.CLIENT)
-    public void initializeClient(Consumer<IClientItemExtensions> consumer) {
-        // Use Create’s simple custom renderer registration
-        consumer.accept(SimpleCustomRenderer.create(this, new BallItemRenderer()));
+    public void customRender(ItemStack stack, int x, int y, PoseStack poseStack, MultiBufferSource buffer, int light, int overlay, BakedModel model) {
+        // Delegate to your BallItemRenderer, or implement your rendering here
+        BallItemRenderer.render(stack, x, y, poseStack, buffer, light, overlay, model);
     }
 }

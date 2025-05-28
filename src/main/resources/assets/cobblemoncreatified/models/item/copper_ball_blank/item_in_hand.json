@@ -1,8 +1,7 @@
 {
-
   "textures": {
-    "layer0": "cobblemoncreatified:item/copper_ball_blank_in_hand",
-    "particle": "cobblemoncreatified:item/copper_ball_blank_in_hand"
+    "layer0": "cobblemoncreatified:item/copper_ball_blank_in_hand"
+
   }
 ,
   "elements": [
@@ -91,13 +90,25 @@
       "translation": [14.5, 7.5, 14.5],
       "scale": [1.8, 1.8, 1.8]
     },
-    "gui": {
-      "rotation": [15, -25, -5],
-      "translation": [2, 3, 0],
-      "scale": [0.65, 0.65, 0.65]
-    },
     "fixed": {
       "translation": [8, 4, 8.5]
     }
-  }
+  },
+  "groups": [
+    {
+      "name": "pokeball",
+      "origin": [0, 0, 0],
+      "color": 0,
+      "children": [
+        {
+          "name": "pokeball_lid",
+          "origin": [0, 4, 4],
+          "color": 0,
+          "children": [0, 1]
+        },
+        2,
+        3
+      ]
+    }
+  ]
 }

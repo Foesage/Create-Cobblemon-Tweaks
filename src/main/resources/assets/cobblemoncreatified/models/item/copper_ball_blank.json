@@ -1,3 +1,4 @@
 {
-  "parent": "cobblemoncreatified:item/copper_ball_blank/item"
+  "parent": "item/generated",
+  "loader": "cobblemoncreatified:ball_model_loader"
 }
