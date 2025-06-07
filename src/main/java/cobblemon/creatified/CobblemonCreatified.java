@@ -2,7 +2,6 @@ package cobblemon.creatified;
 
 import cobblemon.creatified.block.ModBlocks;
 import cobblemon.creatified.block.entity.ModBlockEntities;
-import cobblemon.creatified.client.ModClientSetup; // <-- Added import
 import cobblemon.creatified.datacomponent.ModComponents;
 import cobblemon.creatified.event.CobblemonSpawnBlocker;
 import cobblemon.creatified.event.ModEvents;
@@ -16,14 +15,12 @@ import net.minecraft.client.resources.model.ModelResourceLocation;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraft.world.level.block.Blocks;
-import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.ModList;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.config.ModConfig;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
-import net.neoforged.fml.loading.FMLEnvironment;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import org.slf4j.Logger;
@@ -90,10 +87,6 @@ public class CobblemonCreatified {
         ModComponents.DATA_COMPONENTS.register(modEventBus);
 
         modEventBus.addListener(this::commonSetup);
-
-        if (FMLEnvironment.dist == Dist.CLIENT) {
-            modEventBus.addListener(ModClientSetup::onClientSetup); // <-- Register client setup for item predicates, etc.
-        }
 
         modContainer.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
 
